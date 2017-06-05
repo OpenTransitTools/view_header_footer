@@ -14,6 +14,7 @@ from wsgiref.simple_server import make_server
 def do_static_config(config):
     ''' config the static folders
     '''
+    """
     cache_age=3600
     config.add_static_view('static',    'ott.view:static',        cache_max_age=cache_age)
     config.add_static_view('html',      'ott.view:static',        cache_max_age=cache_age)
@@ -29,7 +30,7 @@ def do_static_config(config):
     config.add_translation_dirs('ott.view:locale')
     config.add_subscriber('ott.view.locale.subscribers.add_renderer_globals', 'pyramid.events.BeforeRender')
     config.add_subscriber('ott.view.locale.subscribers.add_localizer', 'pyramid.events.NewRequest')
-
+    """
 
 @subscriber(ApplicationCreated)
 def application_created_subscriber(event):

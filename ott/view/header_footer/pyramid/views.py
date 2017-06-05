@@ -59,7 +59,6 @@ def example(request):
     h = web_utils.get_response("http://localhost:14141/head.html")
     f = web_utils.get_response("http://localhost:14141/foot.html")
     c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
-
     c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
     ret_val = {
         'header': h,
