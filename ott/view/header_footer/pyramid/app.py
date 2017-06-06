@@ -15,6 +15,7 @@ def do_static_config(config):
     ''' config the static folders
     '''
     cache_age=3600
+
     config.add_static_view('static',    'ott.view:static',        cache_max_age=cache_age)
     config.add_static_view('html',      'ott.view:static',        cache_max_age=cache_age)
     config.add_static_view('js',        'ott.view:static/js',     cache_max_age=cache_age)
@@ -26,9 +27,11 @@ def do_static_config(config):
     config.add_mako_renderer('.html', settings_prefix='mako.')
 
     # internationalization ... @see: locale/subscribers.py for more info
+    '''
     config.add_translation_dirs('ott.view:locale')
     config.add_subscriber('ott.view.locale.subscribers.add_renderer_globals', 'pyramid.events.BeforeRender')
     config.add_subscriber('ott.view.locale.subscribers.add_localizer', 'pyramid.events.NewRequest')
+    '''
 
 
 @subscriber(ApplicationCreated)
