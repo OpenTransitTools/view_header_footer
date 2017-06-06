@@ -28,13 +28,9 @@ ${util.time_stamp()}
 ## customize the section that surrounds the page content by overriding main_wrap_top() and main_wrap_bottom()
 ## 
 <%def name="main_wrap_top()">
-
 </%def>
 <%def name="main_wrap_bottom()">
-
 </%def>
-
-
 <head>
     <meta name="robots" content="all"/>
     ${self.meta_data()}
@@ -43,20 +39,10 @@ ${util.time_stamp()}
     ${self.app_css()}
     ${self.header()}
 </head>
-
-
 <body class="env-develop" id="top" onLoad="${self.js_onload()}">
     <div id="application">
-
     ${self.emergency_content()|n,decode.utf8}
-
-    %if util.is_test():
-    <%include file="/shared/nav-unlinked.html" />
-    %else:
     <%include file="/shared/nav.html" />
-    %endif
-
-
     <section id="content" class="content">
         <a name="content"></a>
         ${next.body()}
@@ -80,14 +66,7 @@ ${util.time_stamp()}
         ${self.bottom()}
         <%include file="/shared/share.html"/>
     </section><!-- #.content -->
-
-
-    %if util.is_test():
-    <%include file="/shared/footer-unlinked.html" />
-    %else:
     <%include file="/shared/footer.html" />
-    %endif
-
-</div><!-- #application -->    
+</div><!-- #application -->
 </body>
 </html>
