@@ -62,11 +62,11 @@ def example(request):
     f = web_utils.get_response("http://localhost:14141/footer.html")
     c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
     #import requests
-    #c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
+    #c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm").text
     ret_val = {
         'header': h,
         'footer': f,
-        'content': c.text
+        'content': c
     }
     return ret_val
 
