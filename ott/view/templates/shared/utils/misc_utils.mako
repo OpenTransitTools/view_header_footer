@@ -29,28 +29,6 @@
 
 <%def name="img_url()">${url_domain()}/images/triptools</%def>
 
-<%def name="planner_img_url()">${img_url()}/mode</%def>
-<%!
-    ''' access these variables in other space via <namespace>.attr, ala util.attr, ala util.attr.WALK
-    '''
-    WALK       = 'WALK'
-    BICYCLE    = 'BICYCLE'
-    TRAM       = 'TRAM'
-    SUBWAY     = 'SUBWAY'
-    STREETCAR  = 'STREETCAR'
-    RAIL       = 'RAIL'
-    BUS        = 'BUS' 
-    CAR        = 'CAR' 
-    CABLE_CAR  = 'CABLE_CAR' 
-    GONDOLA    = 'GONDOLA'
-    FERRY      = 'FERRY'
-    FUNICULAR  = 'FUNICULAR'
-    TRANSIT    = 'TRANSIT'
-    TRAINISH   = 'TRAINISH' 
-    BUSISH     = 'BUSISH'
-    TRAIN      = 'TRAIN'
-    TRANSIT_MODES = (BUS, TRAM, RAIL, TRAIN, GONDOLA, FUNICULAR, FERRY, CABLE_CAR, SUBWAY, STREETCAR, BUSISH, TRAINISH, TRANSIT)
-%>
 
 ## misc methods (defined someplace in the shared space...needed for things to work.
 <%def name="form(url='', method='get', class_='form-style')"></%def>

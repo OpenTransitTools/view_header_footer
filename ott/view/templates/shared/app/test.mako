@@ -10,7 +10,7 @@
         {'u':'header.html', 'p':'title=Title And Header Same&header=True',          'n':'header with title == header (true param)'},
         {'u':'header.html', 'p':'title=No Header',                                  'n':'header with title but no header'},
         {'u':'header.html', 'p':'header=No Title',                                  'n':'header with no title, just header (title == header)'},
-        {'u':'header.html', 'p':'header=WARNING&force_warning',                     'n':'Show a warning on the page'},
+        {'u':'header.html', 'p':'header=WARNING&emergency_content=YO YO YO',        'n':'Show a warning atop the page'},
         {'label': 'Footers'},
         {'u':'footer.html', 'p':'',                                                 'n':'No params'},
         {'label': 'Examples'},
@@ -31,10 +31,8 @@
         ENGLISH
     %endif
     </h1>
-    <h2>Welcome to the Trip Tools testing area!</h2>
+    <h2>Welcome to the Header Footer testing area!</h2>
     <p>Use the links below to test out the Trip Planner and its related pages.</p>
-    <p>We'll probably want to cull this list a bit for the official testing. Reorganize, too. But we need to keep this page as-is... maybe make it test.html or something like that.</p>
-
     %for p in pages:
         %if 'label' in p:
             <h2>${p['label']}</h2>

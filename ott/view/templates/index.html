@@ -1,14 +1,7 @@
 ## -*- coding: utf-8 -*-
 <%inherit file="/desktop/base.html"/>
 <%namespace name="util" file="/shared/utils/misc_utils.mako"/>
-<%namespace name="meta" file="/shared/utils/meta_utils.mako"/>
-<%namespace name="side" file="/shared/utils/sidebar_utils.mako"/>
-<%namespace name="page" file="/shared/utils/pagetype_utils.mako"/>
-<%def name="title()">TriMet: Trip Planner</%def>
-<%def name="meta_data()">${meta.stop()}</%def>
-<%def name="side_bar()"></%def>
-<%def name="app_css()"></%def>
-<%def name="stations_selected()">class="selected"</%def>
+<%def name="title()">Open Trip Tools</%def>
 %if util.is_test() or util.has_url_param('debug'):
 <%include file="/shared/app/test.mako"/>
 %else:

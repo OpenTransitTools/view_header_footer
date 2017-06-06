@@ -42,6 +42,7 @@ def do_view_config(config):
 @view_config(route_name='header_mobile', renderer='mobile/header.html')
 def header(request):
     ret_val = {}
+
     return ret_val
 
 
