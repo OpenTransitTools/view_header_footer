@@ -40,3 +40,4 @@
             <a target="_blank" href="${p['path'] if 'path' in p else rel_path}${p['u']}?${p['p']}${extra_params}">${p['u']}</a>  ${p['n'] if 'n' in p else ''}<br/>
         %endif
     %endfor
+<%include file="/desktop/base_foot.html" />
