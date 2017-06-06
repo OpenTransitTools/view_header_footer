@@ -52,14 +52,17 @@ def footer(request):
     return ret_val
 
 
-@view_config(route_name='example_desktop', renderer='desktop/head_foot_example.html')
-@view_config(route_name='example_mobile',  renderer='mobile/head_foot_example.html')
+@view_config(route_name='example_desktop', renderer='shared/app/example.html')
+@view_config(route_name='example_mobile',  renderer='shared/app/example.html')
 def example(request):
-    import requests
-    h = web_utils.get_response("http://localhost:14141/head.html")
-    f = web_utils.get_response("http://localhost:14141/foot.html")
+    if is_mobile(request):
+        h = web_utils.get_response("http://localhost:14141/header.html")
+    else:
+        h = web_utils.get_response("http://localhost:14141/header.html")
+    f = web_utils.get_response("http://localhost:14141/footer.html")
     c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
-    c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
+    #import requests
+    #c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
     ret_val = {
         'header': h,
         'footer': f,
@@ -103,7 +106,7 @@ def new_request_subscriber(event):
     request = event.request
     request.add_finished_callback(cleanup)
 
-@notfound_view_config(renderer='notfound.mako')
+@notfound_view_config(renderer='shared/notfound.mako')
 def notfound(request):
     '''
         render the notfound.mako page anytime a request comes in that
