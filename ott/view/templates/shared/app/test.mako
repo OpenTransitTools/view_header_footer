@@ -5,11 +5,16 @@
     if util.has_url_param('mobile'):
         rel_path = './m/'
     pages = [
-        {'label': 'Trip Planner Pages'},
-        {'u':'pform_standalone.html', 'p':'from=2&to=834', 'n':'basic embedded trip planner form (outside the home page, as opposed to the server-side include above)'},
-        {'u':'', 'p':'', 'n':''},
-        {'label': 'BLAH'},
-        {'u':'stop_schedule.html', 'p':'stop_id=11507&more', 'n':'more button'},
+        {'label': 'Parts'},
+        {'u':'header.html', 'p':'title=Blah%20;Blah%20;Blah&header=Bo%20;Bo%20;Bo', 'n':'header with title and header'},
+        {'u':'header.html', 'p':'title=Title And Header Same&header=True',          'n':'header with title == header (true param)'},
+        {'u':'header.html', 'p':'title=No Header',                                  'n':'header with title but no header'},
+        {'u':'header.html', 'p':'header=No Title',                                  'n':'header with no title, just header (title == header)'},
+        {'u':'header.html', 'p':'header=WARNING&force_warning',                     'n':'Show a warning on the page'},
+        {'label': 'Footers'},
+        {'u':'footer.html', 'p':'',                                                 'n':'No params'},
+        {'label': 'Examples'},
+        {'u':'example.html', 'p':'', 'n':'example app #1 using header & footer'},
     ] 
 %>
     <button onclick="location.href='.'">ENGLISH</button> <button onclick="location.href='.?_LOCALE_=es'">SPANISH</button> <button onclick="location.href='.?mobile=1${extra_params}'">MOBILE</button>
