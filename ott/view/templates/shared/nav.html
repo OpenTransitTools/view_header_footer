@@ -1,3 +1,4 @@
+<%namespace name="util" file="/shared/utils/misc_utils.mako"/>
 <nav class="mast " role="navigation">
   <div class="mast-wrapper wrapper"> 
     <div class="mast-logo">
@@ -16,19 +17,19 @@
       <div class="menu-content">
         <ul class="menu-list" role="tree">
             <li class="menu-item menu-item-link">
-              <a href="/schedules/index.htm" class="menu-item-header" title="Maps &amp; Schedules" onclick="_gaq.push(['_trackEvent', 'Menu', 'Maps &amp; Schedules', 'Main']);">
+              <a href="${util.url_domain()}/schedules/index.htm" class="menu-item-header" title="Maps &amp; Schedules" onclick="_gaq.push(['_trackEvent', 'Menu', 'Maps &amp; Schedules', 'Main']);">
                 <h3 class="menu-item-main">Maps &amp; Schedules</h3>
                 <div class="menu-item-sub">System Map, Route Maps, Timetables</div>
               </a>
             </li>
             <li class="menu-item menu-item-link">
-              <a href="/stopsandstations/index.htm" class="menu-item-header" title="Stops &amp; Stations" onclick="_gaq.push(['_trackEvent', 'Menu', 'Stops &amp; Stations', 'Main']);">
+              <a href="${util.url_domain()}/stopsandstations/index.htm" class="menu-item-header" title="Stops &amp; Stations" onclick="_gaq.push(['_trackEvent', 'Menu', 'Stops &amp; Stations', 'Main']);">
                 <h3 class="menu-item-main">Stops &amp; Stations</h3>
                 <div class="menu-item-sub">Find a Nearby Stop, Get Stop Details</div>
               </a>
             </li>
     <li class="menu-item menu-item-expandable drawer " role="treeitem">
-      <a href="/fares/index.htm" class="menu-item-header drawer-header" title="Fares" onclick="_gaq.push(['_trackEvent', 'Menu', 'Fares', 'Main']);">
+      <a href="${util.url_domain()}/fares/index.htm" class="menu-item-header drawer-header" title="Fares" onclick="_gaq.push(['_trackEvent', 'Menu', 'Fares', 'Main']);">
         <h3 class="menu-item-main">Fares</h3>
         <div class="menu-item-sub">Prices, Passes, App, Where to Buy</div>
         <div class="drawer-marker"><i class="drawer-marker-a"></i><i class="drawer-marker-b"></i></div>
@@ -36,7 +37,7 @@
     
       <div class="menu-item-content drawer-content js-measure" role="group" aria-hidden="true">
         <ul class="wrapper">
-                      <div class="wrapper">
+              <div class="wrapper">
                   <div class="l-drawer-fares l-drawer-group slice">
                     <div class="slice-item slice-item-expanded l-drawer-grouppush" role="treeitem">
                       <table class="l-drawer-table">
@@ -49,9 +50,9 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td><a href="/fares/index.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Adult', 'Fares']);">
+                            <td><a href="${util.url_domain()}/fares/index.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Adult', 'Fares']);">
                               <div class="media-wrapper">
-                                <div class="media-preview"><img height="50" src="/global/img/drawer/fare-adult.png" alt="" class="media-img"></div>
+                                <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/fare-adult.png" alt="" class="media-img"></div>
                                 <div class="media-content">
                                   <h4 class="media-title">Adult</h4>
                                   <p class="media-message">18&ndash;64</p>
@@ -62,9 +63,9 @@
                             <td class="l-drawer-table-last">$5</td>
                           </tr>
                           <tr>
-                            <td><a href="/fares/honoredcitizen.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Honored Citizen', 'Fares']);">
+                            <td><a href="${util.url_domain()}/fares/honoredcitizen.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Honored Citizen', 'Fares']);">
                               <div class="media-wrapper">
-                                <div class="media-preview"><img height="50" src="/global/img/drawer/fare-honored.png" alt="" class="media-img"></div>
+                                <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/fare-honored.png" alt="" class="media-img"></div>
                                 <div class="media-content">
                                   <h4 class="media-title">Honored Citizen</h4>
                                   <p class="media-message">65+, Medicare or disability</p>
@@ -75,9 +76,9 @@
                             <td class="l-drawer-table-last">$2.50</td>
                           </tr>
                           <tr>
-                            <td><a href="/fares/youth.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Youth', 'Fares']);">
+                            <td><a href="${util.url_domain()}/fares/youth.htm" class="media media-small" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Youth', 'Fares']);">
                               <div class="media-wrapper">
-                                <div class="media-preview"><img height="50" src="/global/img/drawer/fare-youth.png" alt="" class="media-img"></div>
+                                <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/fare-youth.png" alt="" class="media-img"></div>
                                 <div class="media-content">
                                   <h4 class="media-title">Youth</h4>
                                   <p class="media-message">7&ndash;17 or high school/GED</p>
@@ -89,32 +90,32 @@
                           </tr>
                         </tbody>
                       </table>
-                      <a class="l-drawer-link" href="/fares/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Learn More', 'Fares']);"><i class="icon icon-8 icon-right-arrow"></i> Learn more about TriMet fares</a>
+                      <a class="l-drawer-link" href="${util.url_domain()}/fares/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Learn More', 'Fares']);"><i class="icon icon-8 icon-right-arrow"></i> Learn more about TriMet fares</a>
                     </div>
                     <div class="slice-item slice-item-expanded slice-item-single" role="treeitem">
                       <h3 class="l-drawer-header">Where to buy fares</h3>
                       <ul class="l-drawer-media-wrapper" role="group">
-                        <li><a href="/app/index.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Tickets app', 'Fares']);">
+                        <li><a href="${util.url_domain()}/app/index.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Tickets app', 'Fares']);">
                           <div class="media-wrapper">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/ticketsapp.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/ticketsapp.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h4 class="media-title">TriMet Tickets app</h4>
                               <p class="media-message">Pay your fare instantly with your smartphone.</p>
                             </div>
                           </div>
                         </a></li>
-                        <li><a href="/fares/ticketoutlets.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Grocery Stores', 'Fares']);">
+                        <li><a href="${util.url_domain()}/fares/ticketoutlets.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Grocery Stores', 'Fares']);">
                           <div class="media-wrapper">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/grocerystore.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/grocerystore.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h4 class="media-title">Grocery stores</h4>
                               <p class="media-message">Buy fares at Albertsons, Fred Meyer, Safeway and more.</p>
                             </div>
                           </div>
                         </a></li>
-                        <li><a href="/fares/ticketmachines.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Ticket vending machines', 'Fares']);">
+                        <li><a href="${util.url_domain()}/fares/ticketmachines.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'Ticket vending machines', 'Fares']);">
                           <div class="media-wrapper">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/tvm.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/tvm.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h4 class="media-title">Ticket vending machines</h4>
                               <p class="media-message">Get tickets from the machines at MAX, WES and Streetcar stations.</p>
@@ -126,9 +127,9 @@
                     <div class="slice-item slice-item-single">
                       <ul class="l-drawer-media-wrapper" role="group">
                         <li>
-                          <a href="/fares/howtopay.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'On the bus', 'Fares']);">
+                          <a href="${util.url_domain()}/fares/howtopay.htm" class="media" tabindex="0" onclick="_gaq.push(['_trackEvent', 'Menu', 'On the bus', 'Fares']);">
                             <div class="media-wrapper">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/cash.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/cash.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h4 class="media-title">On the bus</h4>
                                 <p class="media-message">You can buy a 2&frac12;-Hour Ticket or a 1-Day Pass from your bus driver.</p>
@@ -139,7 +140,7 @@
                         <li>
                           <a href="http://store.trimet.org/" class="media" tabindex="0">
                             <div class="media-wrapper" onclick="_gaq.push(['_trackEvent', 'Menu', 'Online for delivery by mail', 'Fares']);">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/mailbox.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/mailbox.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h4 class="media-title">Online for delivery by mail</h4>
                                 <p class="media-message">For a small handling fee, you can get tickets and passes by mail.</p>
@@ -148,9 +149,9 @@
                           </a>
                         </li>
                         <li>
-                          <a href="/contact/tto.htm" class="media" tabindex="0">
+                          <a href="${util.url_domain()}/contact/tto.htm" class="media" tabindex="0">
                             <div class="media-wrapper" onclick="_gaq.push(['_trackEvent', 'Menu', 'Ticket Office Pioneer Square', 'Fares']);">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/pioneer-square.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/pioneer-square.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h4 class="media-title">Ticket Office at Pioneer Square</h4>
                                 <p class="media-message">Open Monday through Friday, 8:30 a.m. to 5:30 p.m.</p>
@@ -167,7 +168,7 @@
       </div>
     </li>
     <li class="menu-item menu-item-expandable drawer " role="treeitem">
-      <a href="/guide/index.htm" class="menu-item-header drawer-header" title="Guide" onclick="_gaq.push(['_trackEvent', 'Menu', 'Guide', 'Main']);">
+      <a href="${util.url_domain()}/guide/index.htm" class="menu-item-header drawer-header" title="Guide" onclick="_gaq.push(['_trackEvent', 'Menu', 'Guide', 'Main']);">
         <h3 class="menu-item-main">Guide</h3>
         <div class="menu-item-sub">Our Services, Park &amp; Ride, Bike Parking</div>
         <div class="drawer-marker"><i class="drawer-marker-a"></i><i class="drawer-marker-b"></i></div>
@@ -184,7 +185,7 @@
                         <div class="l-modesbar-main">
                           <ul class="wrapper wrapper-90 slice slice-responsive underline">
                             <li class="slice-item">
-                              <a class="mode mode-media mode-bus has-hover" href="/bus/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'Bus', 'Modal']);">
+                              <a class="mode mode-media mode-bus has-hover" href="${util.url_domain()}/bus/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'Bus', 'Modal']);">
                                 <div class="mode-image"></div>
                                 <div class="mode-name mode-push">
                                   <h4 class="mode-bold">BUS</h4>
@@ -194,7 +195,7 @@
                             </li>
                       
                             <li class="slice-item">
-                              <a class="mode mode-media mode-max has-hover" href="/max/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'MAX', 'Modal']);">
+                              <a class="mode mode-media mode-max has-hover" href="${util.url_domain()}/max/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'MAX', 'Modal']);">
                                 <div class="mode-image"></div>
                                 <div class="mode-name mode-push">
                                   <h4 class="mode-bold">MAX</h4>
@@ -203,7 +204,7 @@
                               </a>
                             </li>
                             <li class="slice-item">
-                              <a class="mode mode-media mode-wes has-hover" href="/wes/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'WES', 'Modal']);">
+                              <a class="mode mode-media mode-wes has-hover" href="${util.url_domain()}/wes/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'WES', 'Modal']);">
                                 <div class="mode-image"></div>
                                 <div class="mode-name mode-push">
                                   <h4 class="mode-bold">WES</h4>
@@ -217,7 +218,7 @@
                         <div class="l-modesbar-alt">
                           <ul class="wrapper wrapper-60 slice slice-responsive">
                             <li class="slice-item">
-                              <a class="mode mode-lift has-hover" href="/lift/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'LIFT', 'Modal']);">
+                              <a class="mode mode-lift has-hover" href="${util.url_domain()}/lift/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'LIFT', 'Modal']);">
                                 <div class="mode-icon"><div class="icon icon-32 icon-lift"></div></div>
                                 <div class="mode-name">
                                   <h4 class="mode-name-small mode-bold mode-secondary">LIFT Paratransit</h4>
@@ -226,7 +227,7 @@
                             </li>
                       
                             <li class="slice-item">
-                              <a class="mode mode-lift has-hover" href="/streetcar/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'Streetcar', 'Modal']);">
+                              <a class="mode mode-lift has-hover" href="${util.url_domain()}/streetcar/index.htm" onclick="_gaq.push(['_trackEvent', 'Bottom', 'Streetcar', 'Modal']);">
                                 <div class="mode-icon"><div class="icon icon-32 icon-streetcar"></div></div>
                                 <div class="mode-name">
                                   <h4 class="mode-name-small mode-bold mode-secondary">Portland Streetcar</h4>
@@ -240,20 +241,20 @@
                     <div class="slice-item">
                       <h4 class="hide">FAQ</h4>
                       <ul class="drawer-list">
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/fares/howtopay.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Paying your fare', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Paying your fare</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/bikes/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Bring your bike', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Bringing your bike</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/parkandride/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Park Ride', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Park &amp; Ride</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/guide/rules.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Rules for riding', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Rules for riding</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/access/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Acessibility', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Accessibility</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/guide/kids.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Traveling with kids', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Traveling with kids</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/fares/fieldtrips.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Group and field trips', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Groups and field trips</a></li>
-                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="/guide/what-can-i-bring.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'What can I bring?', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>What can I bring?</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/fares/howtopay.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Paying your fare', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Paying your fare</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/bikes/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Bring your bike', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Bringing your bike</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/parkandride/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Park Ride', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Park &amp; Ride</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/guide/rules.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Rules for riding', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Rules for riding</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/access/index.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Acessibility', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Accessibility</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/guide/kids.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Traveling with kids', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Traveling with kids</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/fares/fieldtrips.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'Group and field trips', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>Groups and field trips</a></li>
+                        <li class="drawer-item"><a class="how-to-link l-drawer-link" href="${util.url_domain()}/guide/what-can-i-bring.htm" onclick="_gaq.push(['_trackEvent', 'Menu', 'What can I bring?', 'How To']);"><i class="icon icon-8 icon-right-arrow"></i>What can I bring?</a></li>
                       </ul>
                   
                       <ul class="l-drawer-media-wrapper l-drawer-media-triptools">
-                        <li><a href="/tools/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Trip Tools', 'How To']);">
+                        <li><a href="${util.url_domain()}/tools/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Trip Tools', 'How To']);">
                             <div class="media-wrapper">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/triptools.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/triptools.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h5 class="media-title">Trip Tools</h5>
                                 <div class="media-message">Plan your trips and get service info on-the-go.</div>
@@ -269,7 +270,7 @@
       </div>
     </li>
     <li class="menu-item menu-item-expandable drawer " role="treeitem">
-      <a href="/contact/index.htm" class="menu-item-header drawer-header" title="Support" onclick="_gaq.push(['_trackEvent', 'Menu', 'Support', 'Main']);">
+      <a href="${util.url_domain()}/contact/index.htm" class="menu-item-header drawer-header" title="Support" onclick="_gaq.push(['_trackEvent', 'Menu', 'Support', 'Main']);">
         <h3 class="menu-item-main">Support</h3>
         <div class="menu-item-sub">Customer Service, Lost &amp; Found</div>
         <div class="drawer-marker"><i class="drawer-marker-a"></i><i class="drawer-marker-b"></i></div>
@@ -283,7 +284,7 @@
                     <div class="slice-item slice-item-single l-drawer-grouppush ">
                       <h4 class="hide">Common Links</h4>
                       <ul class="l-drawer-media-wrapper l-drawer-block">
-                        <li><a href="/feedback/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Questions comments or suggestions', 'Support']);">
+                        <li><a href="${util.url_domain()}/feedback/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Questions comments or suggestions', 'Support']);">
                           <div class="media-wrapper">
                             <div class="media-content">
                               <div class="media-title">Customer Service</div>
@@ -291,7 +292,7 @@
                           </div>
                         </a></li>
                   
-                        <li><a href="/thanks/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Employee commendation or complaint', 'Support']);">
+                        <li><a href="${util.url_domain()}/thanks/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Employee commendation or complaint', 'Support']);">
                           <div class="media-wrapper">
                             <div class="media-content">
                               <div class="media-title">Employee commendation or complaint</div>
@@ -299,7 +300,7 @@
                           </div>
                         </a></li>
                   
-                        <li><a href="/lost/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Lost and Found', 'Support']);">
+                        <li><a href="${util.url_domain()}/lost/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Lost and Found', 'Support']);">
                           <div class="media-wrapper">
                             <div class="media-content">
                               <div class="media-title">Lost &amp; Found</div>
@@ -315,7 +316,7 @@
                           </div>
                         </a></li>
                   
-                        <li><a href="/ttfeedback/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'TransitTracker feedback', 'Support']);">
+                        <li><a href="${util.url_domain()}/ttfeedback/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'TransitTracker feedback', 'Support']);">
                           <div class="media-wrapper">
                             <div class="media-content">
                               <div class="media-title">TransitTracker feedback</div>
@@ -344,7 +345,7 @@
                             </div>
                           </a></li>
                   
-                          <li><a href="/contact/tto.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Ticket Office', 'Support']);">
+                          <li><a href="${util.url_domain()}/contact/tto.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Ticket Office', 'Support']);">
                             <div class="media-wrapper">
                               <div class="media-content">
                                 <div class="media-title">TriMet Ticket Office</div>
@@ -430,9 +431,9 @@
                     <div class="slice-item slice-item-single">
                       <h4 class="hide">Links</h4>
                       <ul class="l-drawer-media-wrapper">
-                        <li><a href="/app/index.htm" class="media">
+                        <li><a href="${util.url_domain()}/app/index.htm" class="media">
                           <div class="media-wrapper" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Tickets App', 'More']);">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/ticketsapp.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/ticketsapp.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h5 class="media-title">TriMet Tickets app</h5>
                               <div class="media-message">Pay your fare instantly with your smartphone.</div>
@@ -440,9 +441,9 @@
                           </div>
                         </a></li>
                   
-                        <li><a href="/club/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Riders Club', 'More']);">
+                        <li><a href="${util.url_domain()}/club/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Riders Club', 'More']);">
                           <div class="media-wrapper">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/ridersclub.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/ridersclub.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h5 class="media-title">Riders Club</h5>
                               <div class="media-message">Monthly pass giveaways, surveys, contests, events and more.</div>
@@ -452,7 +453,7 @@
                   
                         <li><a href="http://howweroll.trimet.org/" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'TriMet Blog', 'More']);">
                           <div class="media-wrapper">
-                            <div class="media-preview"><img height="50" src="/global/img/drawer/howweroll.png" alt="" class="media-img"></div>
+                            <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/howweroll.png" alt="" class="media-img"></div>
                             <div class="media-content">
                               <h5 class="media-title">TriMet blog</h5>
                               <div class="media-message">Transit news, behind-the-scenes features and fun stuff for riders.</div>
@@ -465,9 +466,9 @@
                     <div class="slice-item slice-item-single">
                       <ul class="l-drawer-media-wrapper">
                         <li>
-                          <a href="/gear/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Gear Store', 'More']);">
+                          <a href="${util.url_domain()}/gear/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'Gear Store', 'More']);">
                             <div class="media-wrapper">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/gearstore.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/gearstore.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h5 class="media-title">Gear Store</h5>
                                 <div class="media-message">TriMet mugs, bags, t-shirts, posters and more.</div>
@@ -476,9 +477,9 @@
                           </a>
                         </li>
                         <li>
-                          <a href="/apps/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'App Center', 'More']);">
+                          <a href="${util.url_domain()}/apps/index.htm" class="media" onclick="_gaq.push(['_trackEvent', 'Menu', 'App Center', 'More']);">
                             <div class="media-wrapper">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/apps.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/apps.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h5 class="media-title">App Center</h5>
                                 <div class="media-message">Transit apps from independent software developers.</div>
@@ -487,9 +488,9 @@
                           </a>
                         </li>
                         <li>
-                          <a href="/about" class="media aboutLink" onclick="_gaq.push(['_trackEvent', 'Menu', 'About Us', 'More']);">
+                          <a href="${util.url_domain()}/about" class="media aboutLink" onclick="_gaq.push(['_trackEvent', 'Menu', 'About Us', 'More']);">
                             <div class="media-wrapper">
-                              <div class="media-preview"><img height="50" src="/global/img/drawer/rosette.png" alt="" class="media-img"></div>
+                              <div class="media-preview"><img height="50" src="${util.url_domain()}/global/img/drawer/rosette.png" alt="" class="media-img"></div>
                               <div class="media-content">
                                 <h5 class="media-title">About us</h5>
                                 <div class="media-message">Who we are, ridership stats, news, safety/security and more.</div>
