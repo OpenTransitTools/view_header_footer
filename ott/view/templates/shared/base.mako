@@ -9,16 +9,27 @@
 <%
     header_text = util.page_header()
     sub_header_text = util.page_sub_header()
+    second_header_text = util.page_second_header()
 %>
 %if header_text:
+<!-- Header start -->
 <div class="standardheader">
+    %if breadcrumb_text and TODO:
+    <p class="breadcrumb"><a href="${util.url_domain()}/index.htm">Home</a> : ${breadcrumb_text}</p>
+    %endif
     <h1>
         ${header_text}
     </h1>
     %if sub_header_text:
     <p class="h1sub">${sub_header_text}</p>
     %endif
+    %if second_header_text:
+    <div class="first">
+        <p class="h1sub">${second_header_text}</p>
+    </div>
+    %endif
 </div>
+<!-- Header end -->
 %endif
 </%def>
 
