@@ -57,10 +57,12 @@ def footer(request):
 @view_config(route_name='example_mobile',  renderer='shared/app/example.html')
 def example(request):
     if is_mobile(request):
-        h = web_utils.get_response("http://localhost:14141/header.html")
+        h = web_utils.get_response("http://localhost:14141/m/header.html")
+        f = web_utils.get_response("http://localhost:14141/m/footer.html")
     else:
         h = web_utils.get_response("http://localhost:14141/header.html")
-    f = web_utils.get_response("http://localhost:14141/footer.html")
+        f = web_utils.get_response("http://localhost:14141/footer.html")
+
     c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
     #import requests
     #c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm").text

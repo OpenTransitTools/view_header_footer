@@ -1,0 +1,52 @@
+## -*- coding: utf-8 -*-
+<%inherit file="/shared/base.html"/>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8 | !(IE)]><!--><html id="html" dir="ltr" lang="en-US" class="no-js"><!--<![endif]-->
+
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<%namespace name="util" file="/shared/utils/misc_utils.mako"/>
+${util.time_stamp()}
+<head>
+    <meta name="robots" content="all"/>
+    ${self.meta_data()}
+    <title>${self.title()}</title>
+    <%include file="/shared/header_includes.html" />
+    ${self.app_css()}
+    ${self.app_js()}
+</head>
+<body class="env-develop" id="top" onLoad="${self.js_onload()}">
+    <div id="application">
+    ${self.emergency_content()|n,decode.utf8}
+    <header id="header-wrap" class="group">
+      <!-- nav begin -->
+      <div id="nav-wrap" class="group">
+          <nav id="nav">
+              <div id="logo"><a href="/m/index.htm"></a></div>
+              <div id="tabs-wrap">
+                  <a id="tabs-icon-open" href="#nav">NAV</a>
+                  <a id="tabs-icon-close" href="#top">${_(u'Close')}</a>
+                  <div id="tabs-ul-wrap">
+                      <ul id="tabs" class="group">
+                          <li><a href="/arrivals/small/pickroute.html" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - TransitTracker']);">Arrival Times (TransitTracker)</a></li>
+                          <li><a href="/ride/m/planner_form.html" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - Plan a Trip']);">Plan a Trip</a></li>
+                          <li><a href="/m/alerts/index.htm" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger Service Alerts']);">Service Alerts</a></li>
+                          <li><a href="/ride/m/stop_select_form.html" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - Stops and Schedules']);">Stops and Stations</a></li>
+                          <li><a href="/m/maps.htm" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - Maps']);">Maps</a></li>
+                          <li><a href="https://public.govdelivery.com/accounts/ORTRIMET/subscriber/new?category_id=ORTRIMET_C2" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - Email Updates']);">Get Updates by Email</a></li>
+                          <li><a href="/m/contact.htm" onclick="_gaq.push(['_trackEvent', 'Mobile', 'InternalClickTo', 'MainMenu - Hamburger - Contact Us']);">Contact Us</a></li>
+                      </ul>
+                  </div>
+              </div><!-- end #tabs-wrap -->
+          </nav><!-- end #nav -->
+      </div><!-- end #nav-wrap -->
+      <!-- nav end -->
+    </header><!-- end #header-wrap -->
+    <!-- content begin -->
+    <section id="content" class="content">
+        <a name="content"></a>
+        ${next.body()}
+    </section>
+    <!-- content end -->
