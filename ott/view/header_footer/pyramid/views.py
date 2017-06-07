@@ -56,9 +56,9 @@ def example(request):
     if do_fieldtrip:
         import requests
         c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
-        c = c.text[570:-14]
+        c = c.text[880:-14]
         ht = html_utils.html_escape("Field Trip Request Form")
-        st = html_utils.html_escape("Complete and return this form to request a field trip if you wish to travel on TriMet with a group of 15 or more. Trips *must* be scheduled and paid for (if applicable) at least *two weeks* in advance. If you have any questions, please email us at fieldtrips@trimet.org or call 503-962-2424, option 4.")
+        st = html_utils.html_escape("Complete and return this form to request a field trip if you wish to travel on TriMet with a group of 15 or more. __Trips **must*** be scheduled and paid for (if applicable) at least two weeks in advance___. If you have any questions, please email us at fieldtrips@trimet.org or call 503-962-2424, option 4.")
     else:
         c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
     if is_mobile(request):

@@ -18,14 +18,14 @@
     <p class="breadcrumb"><a href="${util.url_domain()}/index.htm">Home</a> : ${breadcrumb_text}</p>
     %endif
     <h1>
-        ${header_text}
+        ${header_text|n}
     </h1>
     %if sub_header_text:
-    <p class="h1sub">${sub_header_text}</p>
+    <p class="h1sub">${sub_header_text|n}</p>
     %endif
     %if second_header_text:
     <div class="first">
-        <p class="h1sub">${second_header_text}</p>
+        <p class="h1sub">${second_header_text|n}</p>
     </div>
     %endif
 </div>
