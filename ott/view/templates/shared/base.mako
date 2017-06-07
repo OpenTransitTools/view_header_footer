@@ -4,6 +4,7 @@
 ## BELOW ARE THE ABSTRACT METHODS (to be overridden by sub-classed templates) that populate this base page
 ##
 <%def name="title()">${util.page_title('Transit Information')}</%def>
+
 <%def name="page_header()">
 <%
     header_text = util.page_header()
@@ -20,7 +21,26 @@
 </div>
 %endif
 </%def>
-<%def name="emergency_content()"><!-- ABSTRACT emergency_content() --></%def>
+
+<%def name="emergency_content()">
+<%
+    em_content = util.emergency_content()
+    em_type = util.emergency_type()
+%>
+%if em_content:
+<div id="emergencyContainer">
+  <div id="global-alert" class="show">
+    <div id="NoticeBox">
+      <div id="emergency">
+          <p class="header">${em_content} <span class="update"> TIME TODO </span></p>
+          <p>${em_content}</p>
+      </div>
+    </div>
+  </div>
+</div>
+%endif
+</%def>
+
 <%def name="app_css()"><!--ABSTRACT app_css()--></%def>
 <%def name="app_js()"><!--ABSTRACT app_js()--></%def>
 <%def name="js_onload()">/** ABSTRACT js_onload() **/</%def>

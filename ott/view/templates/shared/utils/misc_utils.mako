@@ -23,6 +23,7 @@
     return ret_val
 %></%def>
 
+
 <%def name="page_sub_header(def_val=None)">
     <%
     ret_val = def_val
@@ -31,6 +32,27 @@
         ret_val = h
     return ret_val
 %></%def>
+
+
+<%def name="emergency_content(def_val=None)">
+    <%
+    ret_val = def_val
+    e = get_first_param_safe_str('emergency_content', 300)
+    if e:
+        ret_val = e
+    return ret_val
+%></%def>
+
+
+<%def name="emergency_type(def_val='caution')">
+    <%
+    ret_val = def_val
+    e = get_first_param_safe_str('emergency_type', 40)
+    if e:
+        ret_val = e
+    return ret_val
+%></%def>
+
 
 <%def name="get_ini_param(name, def_val=None)"><%
     ret_val = def_val
