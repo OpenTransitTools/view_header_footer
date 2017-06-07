@@ -1,4 +1,5 @@
 ## -*- coding: utf-8 -*-
+<%inherit file="/shared/base.html"/>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -11,13 +12,6 @@ ${util.time_stamp()}
 ##
 ## BELOW ARE THE ABSTRACT METHODS (to be overridden by sub-classed templates) that populate this base page
 ##
-<%def name="title()">Transit Information</%def>
-<%def name="meta_data()"><!--ABSTRACT meta_data()--></%def>
-<%def name="page_header()"><!--ABSTRACT header()--></%def>
-<%def name="emergency_content()"><!-- ABSTRACT emergency_content() --></%def>
-<%def name="app_css()"><!--ABSTRACT app_css()--></%def>
-<%def name="app_js()"><!--ABSTRACT app_js()--></%def>
-<%def name="js_onload()">/** ABSTRACT js_onload() **/</%def>
 <head>
     <meta name="robots" content="all"/>
     ${self.meta_data()}
