@@ -4,7 +4,22 @@
 ## BELOW ARE THE ABSTRACT METHODS (to be overridden by sub-classed templates) that populate this base page
 ##
 <%def name="title()">${util.page_title('Transit Information')}</%def>
-<%def name="page_header()">${util.page_header()}</%def>
+<%def name="page_header()">
+<%
+    header_text = util.page_header()
+    sub_header_text = util.page_sub_header()
+%>
+%if header_text:
+<div class="standardheader">
+    <h1>
+        ${header_text}
+    </h1>
+    %if sub_header_text:
+    <p class="h1sub">${sub_header_text}</p>
+    %endif
+</div>
+%endif
+</%def>
 <%def name="emergency_content()"><!-- ABSTRACT emergency_content() --></%def>
 <%def name="app_css()"><!--ABSTRACT app_css()--></%def>
 <%def name="app_js()"><!--ABSTRACT app_js()--></%def>

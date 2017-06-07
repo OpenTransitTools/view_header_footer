@@ -23,6 +23,15 @@
     return ret_val
 %></%def>
 
+<%def name="page_sub_header(def_val=None)">
+    <%
+    ret_val = def_val
+    h = get_first_param_safe_str('sub_header', 200)
+    if h:
+        ret_val = h
+    return ret_val
+%></%def>
+
 <%def name="get_ini_param(name, def_val=None)"><%
     ret_val = def_val
     try:
