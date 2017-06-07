@@ -1,5 +1,28 @@
 ## -*- coding: utf-8 -*-
 
+<%def name="page_title(def_val='')">
+    <%
+    ret_val = def_val
+    t = get_first_param_safe_str('title')
+    if t:
+        ret_val = t
+    else:
+        h = get_first_param_safe_str('header')
+        if h:
+            ret_val = h
+    return ret_val
+%></%def>
+
+
+<%def name="page_header(def_val=None)">
+    <%
+    ret_val = def_val
+    h = get_first_param_safe_str('header', 200)
+    if h:
+        ret_val = h
+    return ret_val
+%></%def>
+
 <%def name="get_ini_param(name, def_val=None)"><%
     ret_val = def_val
     try:
@@ -13,46 +36,7 @@
 
 <%def name="url_domain()"><% return get_ini_param('ott.css_url', '') %></%def>
 <%def name="is_test()"><% return get_ini_param('ott.is_test') %></%def>
-
-<%def name="error_msg(extra_params, feedback_url)">
-<%
-    error_message = get_first_param('error_message')
-    app_name      = get_first_param('app_name', 'Trip Planner')
-%>
-%if error_message and error_message != 'None':
-<h2 class="error">${_(error_message)}</h2>
-%else:
-<h2 class="error">${_(u'The')} ${_(app_name)} ${_(u'is not working...')}</h2>
-%endif
-<p align="center"><a href="${feedback_url}">${_(u'Contact us')}</a> ${_(u'let us know more')}.</p>
-</%def>
-
 <%def name="img_url()">${url_domain()}/images/triptools</%def>
-
-
-## misc methods (defined someplace in the shared space...needed for things to work.
-<%def name="form(url='', method='get', class_='form-style')"></%def>
-<%def name="end_form()"></%def>
-<%def name="select(name='route', stuff=[], options='')"></%def>
-<%def name="route_select_options()"></%def>
-<%def name="url_for(controller='main', action='route_stops_list')"></%def>
-<%def name="option(v, p, selected=False, show=True)"><option ${'selected="selected"' if selected else '' | n} value="${v}">${p}</option></%def>
-
-<%def name="get_ele(struct, name, def_val=None)"><%
-    ret_val = def_val
-    if name in struct and struct[name]:
-        ret_val = struct[name]
-    return ret_val
-%></%def>
-
-<%def name="get_val(val, def_val=None)">
-<%
-    ret_val = def_val
-    if val:
-        ret_val = val
-    return ret_val
-%>
-</%def>
 
 <%def name="localize_str(s, def_val=None)"><%
     ret_val = def_val
@@ -78,68 +62,6 @@
     return ret_val
 %></%def>
 
-<%def name="clean_name(name)"><% return name.replace('%26', '&').replace('%27', "'") %></%def>
-
-<%def name="name_city_stopid(name, city, type=None, id=None)"><%
-    ret_val = _(u'Undefined')
-    try:
-        stop = ''
-        if type == 'stop':
-            stop = " (" + _(u'Stop ID') + " " + id + ")"
-        if city:
-            city = ', ' + city
-        else:
-            city = ''
-        ret_val = clean_name(name) + city + stop
-    except:
-        pass
-    return ret_val
-%></%def>
-
-<%def name="name_city_str(name, city, type_name=None, stop_id='')"><%
-    ret_val = _(u'Undefined')
-    if name and len(name) > 0:
-        ret_val = clean_name(name)
-
-    city = localize_str(city)
-    tn = localize_str(type_name, type_name)
-    type_name = unicode_to_str(tn, type_name) # have to do this for .format()
-    if stop_id is None:
-        stop_id = ''
-
-    try:
-        if city and type_name:
-            ret_val = "{0} ({1} {2} {3} {4})".format(ret_val, type_name, stop_id, _(u'in'), city)
-        elif city:
-            ret_val = "{0} ({1} {2})".format(ret_val, _(u'in'), city)
-        elif type_name and len(stop_id) > 0:
-            ret_val = "{0} ({1} {2})".format(ret_val, type_name, stop_id)
-        elif type_name:
-            ret_val = "{0} ({1})".format(ret_val, type_name)
-    except:
-        pass
-
-    return ret_val
-%></%def>
-
-<%def name="name_city_str_from_struct(struct)"><%
-    name = get_ele(struct, 'name')
-    city = get_ele(struct, 'city')
-    name_city = name_city_str(name, city) 
-    return name_city
-%></%def>
-
-## 
-## 
-## 
-<%def name="map_place_link(place, path_prefix='')"><%
-    extra_params = get_extra_params()
-    name = get_ele(place, 'name', _(u'Undefined'))
-    city = get_ele(place, 'city', '')
-    name_city = name_city_str_from_struct(place)
-%>${name_city} <a href="${path_prefix}map_place.html?name=${prep_url_params(name, True)}&city=${prep_url_params(city)}&lon=${place['lon']}&lat=${place['lat']}${extra_params}"><small>Map</small></a>
-</%def>
-
 <%def name="get_url(url=None)"><%
     ret_val = url
     if url is None:
@@ -149,127 +71,14 @@
     return ret_val
 %></%def>
 
-##
-## FEEDBACK URL: http://trimet.org/mailforms/tripfeedback?mailform[subject]=Stop X&mailform[url]=<a href='app url'>Blah</a>
-##
-## TODO: have a default feedback_url, and override this method for trimet...
-## 
-<%def name="trimet_feedback_url(subject, message=None, url=None)"><% 
-    # default to url in request object 
-    if url is None:
-        url = get_url(url)
-    if message is None:
-        message = get_url(url)
 
-    # localized mailform app
-    mailform_page="tripfeedback"
-    if request.locale_name == 'es':
-        mailform_page="es_tripfeedback"
-
-    subject = prep_url_params(subject, url_escape=True, spell_and=True)
-    message = prep_url_params(message, url_escape=True, spell_and=True)
-%>http://trimet.org/mailforms/${mailform_page}?mailform[subject]=${subject}&mailform[url]=<a href='${url}'>${message}</a></%def>
-
-## TODO: localize???
-<%def name="mailto_url(subject='Link to TriMet', message='Check out this page on trimet.org', url=None)"><%
-    if url is None:
-        url = get_url(url)
-    subject = prep_url_params(subject, url_escape=True, spell_and=True)
-    message = prep_url_params(message, url_escape=True, spell_and=True)
-%>mailto:?subject=${subject}&body=${message}%20:%20${url}</%def>
-
-
-<%def name="mailto_geocoder(place, svc, url='TripTech@trimet.org')"><%
-    subject='Error geocoding an address'
-    message='Having trouble finding this address search string'
-    subject = prep_url_params(subject, url_escape=True, spell_and=True)
-    message = prep_url_params(message, url_escape=True, spell_and=True)
-
-    place   = prep_url_params(place,   url_escape=True, spell_and=True)
-    geo = "\n\nhttp://trimet.org/ride/{0}{1}".format(svc, place)
-    geo = prep_url_params(geo, url_escape=True, spell_and=True)
-%>mailto:${url}?subject=${subject}&body=${message}:%20${place} ${geo}</%def>
-
-<%def name="geocoder_feedback(geo, svc='stop_select_geocode.html?place=')">
-<p><small>${_(u"Can’t find your address?")} <a href="${mailto_geocoder(geo, svc)}">${_(u'Please let us know')}</a> ${_(u'so we can improve the Trip Planner')}.</small></p>
-</%def>
-
-##
-## from / to links
-## TODO: fix these urls, so that urls are dynamic / off depending upon agency, etc...\
-##
-<%def name="plan_a_trip_links(name, lon, lat, extra_params='')">
-<h3>${_(u'Plan a trip')}</h3>
-<p><a href="/#/planner/form/to=${make_named_coord(name, lat, lon)}${extra_params}" title="${_(u'Plan a trip')} ${_(u'to')} ${name}" class="tripplanner"><i class="fa-tp-outline"></i> ${_(u'To here')}</a></p>
-<p><a href="/#/planner/form/from=${make_named_coord(name, lat, lon)}${extra_params}" title="${_(u'Plan a trip')} ${_(u'from')} ${name}" class="tripplanner"><i class="fa-tp-outline"></i> ${_(u'From here')}</a></p>
-</%def>
-
-##
-## dynamic img ... see dynamiclyLoadImages() in triptools.js for more
-##
-<%def name="dynamic_img(url, w, h, alt='dynamic img (requires javascript)', def_img='//maps.trimet.org/images/ui/s.gif', no_expand=False)">
-%if no_expand:
-<img src="${url}" alt="${alt}"/>
-%else:
-<img dsrc="${url}" dwidth="${w}" dheight="${h}" alt="${alt}" src="${def_img}"/>
-%endif
-</%def>
-
-<%def name="make_named_coord(name, lat, lon)">
+<%def name="get_first_param_safe_str(param_name, max_len=60, def_val=None)">
 <%
-    name = unicode(name)
-    name = name.replace('&', '%26')
-    ret_val = u"{0}::{1},{2}".format(name, lat, lon)
-    return ret_val
+    from ott.utils import html_utils
+    return html_utils.get_first_param_safe_str(request, param_name, max_len, def_val)
 %>
 </%def>
 
-<%def name="make_named_coord_from_obj(obj)">
-<%
-    return make_named_coord(obj['name'], obj['lat'] ,obj['lon']) 
-%>
-</%def>
-
-##
-## if we geocoded stuff on some other pages, we'll cache them here via .js 
-##
-<%def name="cache_geocodes_in_browser(cache, prefix='js')">
-<script src="${prefix}/autocomplete.js"></script>
-<script>
-    var pc = new PlaceCache();
-    %for c in cache:
-    pc.add(new PlaceDAO("${c['label']}", "${c['lat']}", "${c['lon']}", true));
-    %endfor
-</script>
-</%def>
-
-##
-## do things like escape & in intersection names, etc...
-##
-<%def name="prep_url_params(params, no_space=False, url_escape=False, spell_and=False)">
-<%
-    ret_val = params
-    try:
-        # step 1: convert & in intersection names, ala F Blvd & Z Ave to %26
-        if no_space:
-            ret_val = ret_val.replace('&', '%26')
-        else:
-            ret_val = ret_val.replace(' & ', ' %26 ')
-
-        # step 2: replace all instance of %26 with 'and'
-        if spell_and:
-            ret_val = ret_val.replace('%26', 'and')
-
-        # step 3: order is important ... want to convert to %26 above before escaping...else you'll get an &amp; in you name...
-        if url_escape:
-            # use escape method from urllib 
-            import urllib
-            ret_val = urllib.quote(ret_val) 
-    except:
-        pass
-    return ret_val
-%>
-</%def>
 
 <%def name="get_first_param(param_name, def_val=None)">
 <%
@@ -277,6 +86,8 @@
     return html_utils.get_first_param(request, param_name, def_val)
 %>
 </%def>
+
+
 
 <%def name="has_url_param(param_name)">
 <%
@@ -360,19 +171,6 @@
     ${day_options(selected)}
     </select></%def>
 
-<%def name="link_or_strong(strong_label, link_label, make_strong, url, l_bracket='[', r_bracket=']')">
-    %if make_strong:
-        <span class="toggle">${strong_label}</span>
-    %else:
-        <a href="${url}" class="toggle">${link_label}</a>
-    %endif
-</%def>
-
-<%def name="list_to_str(list, sep=', ')">${sep.join(list)}</%def>
-
-<%def name="alerts_inline_icon_link(img_url='/global/img/icon-alert.png')">
-    <a href="#alerts" class="stop-alert"><img src="${url_domain()}${img_url}" alt="${_(u'Service alert at this stop')}" title="${_(u'Service alert at this stop')}" /></a>
-</%def>
 
 <%def name="alerts(alert_list, img_url='/global/img/icon-alert.png')">
     %if alert_list and len(alert_list) > 0:

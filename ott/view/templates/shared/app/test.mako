@@ -10,7 +10,7 @@
         rel_path = './m/'
     pages = [
         {'label': 'Parts'},
-        {'u':'header.html', 'p':'title=Blah%20;Blah%20;Blah&header=Bo%20;Bo%20;Bo', 'n':'header with title and header'},
+        {'u':'header.html', 'p':'title=Blah%20Blah%20Blah&header=Bo%20Bo%20Bo', 'n':'header with title and header'},
         {'u':'header.html', 'p':'title=Title And Header Same&header=True',          'n':'header with title == header (true param)'},
         {'u':'header.html', 'p':'title=No Header',                                  'n':'header with title but no header'},
         {'u':'header.html', 'p':'header=No Title',                                  'n':'header with no title, just header (title == header)'},

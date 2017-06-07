@@ -3,8 +3,8 @@
 ##
 ## BELOW ARE THE ABSTRACT METHODS (to be overridden by sub-classed templates) that populate this base page
 ##
-<%def name="title()">Transit Information</%def>
-<%def name="page_header()"><!--ABSTRACT header()--></%def>
+<%def name="title()">${util.page_title('Transit Information')}</%def>
+<%def name="page_header()">${util.page_header()}</%def>
 <%def name="emergency_content()"><!-- ABSTRACT emergency_content() --></%def>
 <%def name="app_css()"><!--ABSTRACT app_css()--></%def>
 <%def name="app_js()"><!--ABSTRACT app_js()--></%def>
