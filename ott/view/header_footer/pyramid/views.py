@@ -1,8 +1,5 @@
-import StringIO
-import re
-
+## -*- coding: utf-8 -*-
 from pyramid.request import Request
-from pyramid.response import Response
 from pyramid.httpexceptions import HTTPFound
 
 from pyramid.view import view_config
@@ -14,8 +11,6 @@ from pyramid.events import subscriber
 
 from ott.utils import web_utils
 from ott.utils import html_utils
-from ott.utils import object_utils
-from ott.utils import transit_utils
 
 import logging
 log = logging.getLogger(__file__)
@@ -42,7 +37,6 @@ def do_view_config(config):
 @view_config(route_name='header_mobile', renderer='mobile/header.html')
 def header(request):
     ret_val = {}
-
     return ret_val
 
 
@@ -56,16 +50,24 @@ def footer(request):
 @view_config(route_name='example_desktop', renderer='shared/app/example.html')
 @view_config(route_name='example_mobile',  renderer='shared/app/example.html')
 def example(request):
+    ht = st = ""
+    #import pdb; pdb.set_trace()
+    do_fieldtrip = True
+    if do_fieldtrip:
+        import requests
+        c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
+        c = c.text[570:-14]
+        ht = html_utils.html_escape("Field Trip Request Form")
+        st = html_utils.html_escape("Complete and return this form to request a field trip if you wish to travel on TriMet with a group of 15 or more. Trips *must* be scheduled and paid for (if applicable) at least *two weeks* in advance. If you have any questions, please email us at fieldtrips@trimet.org or call 503-962-2424, option 4.")
+    else:
+        c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
     if is_mobile(request):
-        h = web_utils.get_response("http://localhost:14141/m/header.html")
+        h = web_utils.get_response("http://localhost:14141/m/header.html?header={}&second_header={}".format(ht, st))
         f = web_utils.get_response("http://localhost:14141/m/footer.html")
     else:
-        h = web_utils.get_response("http://localhost:14141/header.html")
+        h = web_utils.get_response("http://localhost:14141/header.html?header={}&second_header={}".format(ht, st))
         f = web_utils.get_response("http://localhost:14141/footer.html")
 
-    c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
-    #import requests
-    #c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm").text
     ret_val = {
         'header': h,
         'footer': f,
