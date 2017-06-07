@@ -8,7 +8,6 @@ from pyramid.events import ApplicationCreated
 from pyramid.events import NewRequest
 
 from ott.view.header_footer.pyramid import views
-from wsgiref.simple_server import make_server
 
 
 def do_static_config(config):
@@ -54,29 +53,6 @@ def new_request_subscriber(event):
     request.BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-def cmdline():
-    ''' as an alternate to pserve, you can run this via bin/python ott/view/pyramid_app 
-        it should start the server on http://127.0.0.1:8080
-    '''
-
-    # configuration settings
-    here = os.path.dirname(os.path.abspath(__file__))
-    mako_dir = os.path.join(here, 'templates')
-    log.info(here + " " + mako_dir)
-
-    # make the mako views
-    settings={}
-    settings['mako.directories'] = mako_dir
-    config=make_config(settings)
-    views.do_view_config(config)
-
-    # serve app
-    app = config.make_wsgi_app()
-    server = make_server('0.0.0.0', 8080, app)
-    server.serve_forever()
-    get_settings()
-
-
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
         run with: bin/pserve pyramid.ini --reload
@@ -88,8 +64,3 @@ def main(global_config, **settings):
 
     config.scan()
     return config.make_wsgi_app()
-
-
-if __name__ == '__main__':
-    cmdline()
-

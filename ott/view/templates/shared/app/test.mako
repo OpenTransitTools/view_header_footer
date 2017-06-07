@@ -1,5 +1,7 @@
-<%inherit file="/desktop/base_head.html"/>
+<%inherit file="/desktop/header_base.html"/>
 <%def name="title()">Open Trip Tools</%def>
+<%def name="js_ui_include()">Open Trip Tools</%def>
+
 <%namespace name="util"  file="/shared/utils/misc_utils.mako"/>
 <%
     extra_params = util.get_extra_params()
