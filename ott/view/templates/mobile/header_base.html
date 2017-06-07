@@ -13,7 +13,7 @@ ${util.time_stamp()}
     <meta name="robots" content="all"/>
     ${self.meta_data()}
     <title>${self.title()}</title>
-    <%include file="/shared/header_includes.html" />
+    <%include file="/shared/css_icon_includes.html" />
     <link href="${util.url_domain()}/m/css/styles.css" rel="stylesheet" type="text/css" />
     ${self.app_css()}
     ${self.app_js()}
@@ -28,7 +28,7 @@ ${util.time_stamp()}
               <div id="logo"><a href="${util.url_domain()}/m/index.htm"></a></div>
               <div id="tabs-wrap">
                   <a id="tabs-icon-open" href="#nav">NAV</a>
-                  <!-- ="tabs-icon-close" href="#top">  $ _ { (u'Close) } </a> -->
+                  <!-- ="tabs-icon-close" href="#top">  $ _ { (u'Close) } </a> TODO -->
                   <a id="tabs-icon-close" href="#top">Close</a>
                   <div id="tabs-ul-wrap">
                       <ul id="tabs" class="group">
