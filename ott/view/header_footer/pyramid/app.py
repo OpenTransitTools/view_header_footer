@@ -49,7 +49,7 @@ def new_request_subscriber(event):
        1. entry point for a new server request
        2. configure the request context object (can insert new things like db connections or authorization to pass around in this given request context)
     '''
-    #log.debug("new request called -- request is 'started'")
+    log.debug("new request called -- request is 'started'")
     request = event.request
     request.BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
