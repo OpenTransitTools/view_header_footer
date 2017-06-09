@@ -1,2 +1,8 @@
 ## -*- coding: utf-8 -*-
-<%inherit file="footer_base.html"/>
+<%inherit file="/shared/base_footer.html"/>
+<%namespace name="util" file="/shared/utils/misc_utils.mako"/>
+    <div id="footer">
+        <p class="footer-links" align="center">
+            <a target="_blank" href="${util.url_domain()}/legal/index.htm" >Terms of Use</a> &nbsp;|&nbsp; <a target="_blank" href="${util.url_domain()}/legal/privacy.htm">Privacy Policy</a> &nbsp;|&nbsp; &copy; ${util.print_year()} TriMet
+        </p>
+    </div>

@@ -2,10 +2,9 @@
 <%inherit file="/shared/base.mako"/>
     </section>
     <!-- content end -->
-    <%include file="footer_includes.html" />
+    ${next.body()}
 </div><!-- #application -->
 </body>
-${next.body()}
-${self.js_ui_include()}
+<%namespace name="ana"  file="/shared/utils/analytics_utils.mako"/>
+${ana.ga_init()}
 </html>
-

@@ -5,6 +5,11 @@
 ##
 <%def name="title()">${util.page_title('Transit Information')}</%def>
 
+<%def name="meta_data()">
+    <meta name="Keywords"    content="Transit, Schedule, Information"/>
+    <meta name="Description" content="Transit Information System"/>
+</%def>
+
 <%def name="nav_bar()"></%def>
 
 <%def name="page_header()">
@@ -59,9 +64,4 @@
 <%def name="app_css()"><!--ABSTRACT app_css()--></%def>
 <%def name="app_js()"><!--ABSTRACT app_js()--></%def>
 <%def name="js_onload()">/** ABSTRACT js_onload() **/</%def>
-<%def name="js_ui_include()"></%def>
-<%def name="meta_data()">
-    <meta name="Keywords"    content="Transit, Schedule, Information"/>
-    <meta name="Description" content="Transit Information System"/>
-</%def>
 ${next.body()}
