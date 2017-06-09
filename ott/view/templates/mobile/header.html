@@ -1,3 +1,8 @@
 ## -*- coding: utf-8 -*-
+<%namespace name="util" file="/shared/utils/misc_utils.mako"/>
 <%inherit file="header_base.html"/>
 
+<%def name="app_css()">
+    <%include file="/shared/css_icon_includes.html" />
+    <link href="${util.url_domain()}/m/css/styles.css" rel="stylesheet" type="text/css" />
+</%def>
