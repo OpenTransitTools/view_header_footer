@@ -60,7 +60,6 @@ setup(
     license="Mozilla-derived (http://opentransittools.com)",
     url='http://opentransittools.com',
     keywords='ott, otp, view, transit',
-    package_data={'': ['*.html', '*.mako']},
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
