@@ -17,7 +17,7 @@ ${util.time_stamp()}
 <body class="env-develop" id="top" onLoad="${self.js_onload()}">
     <div id="application">
     ${self.emergency_content()|n,decode.utf8}
-    <%include file="nav.html" />
+    ${self.nav_bar()}
     <!-- content begin -->
     <section id="content" class="content">
         <a name="content"></a>

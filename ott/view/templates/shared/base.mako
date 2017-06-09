@@ -5,6 +5,8 @@
 ##
 <%def name="title()">${util.page_title('Transit Information')}</%def>
 
+<%def name="nav_bar()"></%def>
+
 <%def name="page_header()">
 <%
     header_text = util.page_header()
@@ -33,6 +35,7 @@
 %endif
 </%def>
 
+
 <%def name="emergency_content()">
 <%
     em_content = util.emergency_content()
@@ -51,6 +54,7 @@
 </div>
 %endif
 </%def>
+
 
 <%def name="app_css()"><!--ABSTRACT app_css()--></%def>
 <%def name="app_js()"><!--ABSTRACT app_js()--></%def>
