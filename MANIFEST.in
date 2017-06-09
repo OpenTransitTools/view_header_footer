@@ -1,3 +1,5 @@
+include config/development.ini
+include config/production.ini
 recursive-include config *
 recursive-include ott/view/templates *
 recursive-include ott/view/locale *
