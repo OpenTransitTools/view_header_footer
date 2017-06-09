@@ -62,10 +62,10 @@ def example(request):
     else:
         c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
     if is_mobile(request):
-        h = web_utils.get_response("http://localhost:14141/m/header.html?header={}&second_header={}".format(ht, st))
+        h = web_utils.get_response("http://localhost:14141/m/header.html?header={}&second_header={}".format(ht.strip(), st.strip()))
         f = web_utils.get_response("http://localhost:14141/m/footer.html")
     else:
-        h = web_utils.get_response("http://localhost:14141/header.html?header={}&second_header={}".format(ht, st))
+        h = web_utils.get_response("http://localhost:14141/header.html?header={}&second_header={}".format(ht.strip(), st.strip()))
         f = web_utils.get_response("http://localhost:14141/footer.html")
 
     ret_val = {
