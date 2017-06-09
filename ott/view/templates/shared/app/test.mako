@@ -1,4 +1,4 @@
-<%inherit file="../header_base.html"/>
+<%inherit file="../base_header.html"/>
 <%def name="title()">Open Trip Tools</%def>
 <%def name="js_ui_include()">Open Trip Tools</%def>
 
