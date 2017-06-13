@@ -50,6 +50,31 @@ def footer(request):
 @view_config(route_name='example_desktop', renderer='shared/app/example.html')
 @view_config(route_name='example_mobile',  renderer='shared/app/example.html')
 def example(request):
+    from ott.view.header_footer.utils import sandwich
+
+    h = "This is a special page"
+    s = "with an extra special formatting"
+    if is_mobile(request):
+        header = web_utils.get_response("http://localhost:14141/m/header.html?header={}&second_header={}".format(h, s))
+        footer = web_utils.get_response("http://localhost:14141/m/footer.html")
+    else:
+        header = web_utils.get_response("http://localhost:14141/header.html?header={}&second_header={}".format(h, s))
+        footer = web_utils.get_response("http://localhost:14141/footer.html")
+
+    from pyramid.path import AssetResolver
+    a = AssetResolver()
+    resolver = a.resolve('../../templates/shared/app/example.html')
+    cfg = {'output': resolver.abspath(),
+            'inputs': [
+                {"url": header},
+                {"text": "You are special, my friend."},
+                {"url": footer},
+           ]
+    }
+    sandwich.sandwich(cfg)
+    return {}
+
+def sexample(request):
     ht = st = ""
     #import pdb; pdb.set_trace()
     do_fieldtrip = True
@@ -61,12 +86,6 @@ def example(request):
         st = html_utils.html_escape("Complete and return this form to request a field trip if you wish to travel on TriMet with a group of 15 or more. __Trips **must*** be scheduled and paid for (if applicable) at least two weeks in advance___. If you have any questions, please email us at fieldtrips@trimet.org or call 503-962-2424, option 4.")
     else:
         c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
-    if is_mobile(request):
-        h = web_utils.get_response("http://localhost:14141/m/header.html?header={}&second_header={}".format(ht.strip(), st.strip()))
-        f = web_utils.get_response("http://localhost:14141/m/footer.html")
-    else:
-        h = web_utils.get_response("http://localhost:14141/header.html?header={}&second_header={}".format(ht.strip(), st.strip()))
-        f = web_utils.get_response("http://localhost:14141/footer.html")
 
     ret_val = {
         'header': h,

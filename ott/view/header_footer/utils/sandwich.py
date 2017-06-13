@@ -54,16 +54,23 @@ def get_data(cfg, def_val=""):
     return ret_val
 
 
-def sandwich(cfg_path='sandwich.conf'):
-    cfg = get_json(cfg_path)
-    with open(cfg.get('output'), 'w') as f:
-        for c in cfg.get('inputs'):
-            data = get_data(c)
+def sandwich(config):
+    ''' assumes a dict with output string (file) and input list (content)
+        @see sandwich.conf for an example
+    '''
+    with open(config.get('output'), 'w') as f:
+        for cfg in config.get('inputs'):
+            data = get_data(cfg)
             f.write(data)
 
 
+def sandwich_via_file(config_path='sandwich.conf'):
+    config = get_json(config_path)
+    sandwich(config)
+
+
 def main():
-    sandwich()
+    sandwich_via_file()
 
 if __name__ == '__main__':
     main()
