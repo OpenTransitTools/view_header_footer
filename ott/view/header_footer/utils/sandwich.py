@@ -58,10 +58,16 @@ def sandwich(config):
     ''' assumes a dict with output string (file) and input list (content)
         @see sandwich.conf for an example
     '''
+
+    # step 1: cache the data
+    data = []
+    for cfg in config.get('inputs'):
+        data.append(get_data(cfg))
+
+    # step 2: output that data
     with open(config.get('output'), 'w') as f:
-        for cfg in config.get('inputs'):
-            data = get_data(cfg)
-            f.write(data)
+        for d in data:
+            f.write(d)
 
 
 def sandwich_via_file(config_path='sandwich.conf'):
