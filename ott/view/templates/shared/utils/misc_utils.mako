@@ -1,15 +1,13 @@
 ## -*- coding: utf-8 -*-
-
-<%def name="page_title(def_val='')">
-    <%
+<%def name="page_title(def_val='')"><%
     ret_val = def_val
     t = get_first_param_safe_str('title')
     if t:
-        ret_val = t
+        ret_val = t.strip()
     else:
         h = get_first_param_safe_str('header')
         if h:
-            ret_val = h
+            ret_val = h.strip()
     return ret_val
 %></%def>
 
@@ -48,6 +46,7 @@
     return ret_val
 %></%def>
 
+
 <%def name="unicode_to_str(s, def_val=None)"><%
     ret_val = def_val
     try:
@@ -57,6 +56,7 @@
         ret_val = def_val
     return ret_val
 %></%def>
+
 
 <%def name="get_url(url=None)"><%
     ret_val = url
@@ -68,36 +68,29 @@
 %></%def>
 
 
-<%def name="get_first_param_safe_str(param_name, max_len=60, def_val=None)">
-<%
+<%def name="get_first_param_safe_str(param_name, max_len=60, def_val=None)"><%
     from ott.utils import html_utils
     return html_utils.get_first_param_safe_str(request, param_name, max_len, def_val)
-%>
-</%def>
+%></%def>
 
 
-<%def name="get_first_param(param_name, def_val=None)">
-<%
+<%def name="get_first_param(param_name, def_val=None)"><%
     from ott.utils import html_utils
     return html_utils.get_first_param(request, param_name, def_val)
-%>
-</%def>
+%></%def>
 
 
-
-<%def name="has_url_param(param_name)">
-<%
+<%def name="has_url_param(param_name)"><%
     from ott.utils import html_utils
     ret_val = False
     loc = html_utils.get_first_param(request, param_name)
     if loc:
         ret_val = True
     return ret_val
-%>
-</%def>
+%></%def>
 
-<%def name="get_locale(def_val='en')">
-<%
+
+<%def name="get_locale(def_val='en')"><%
     from ott.utils import html_utils
     ret_val = def_val
     try:
@@ -107,11 +100,9 @@
     except:
         ret_val = def_val
     return ret_val
-%>
-</%def>
+%></%def>
 
-<%def name="get_extra_params(def_val='')">
-<%
+<%def name="get_extra_params(def_val='')"><%
     ''' extra_params: this variable is built here, and should be appended to all <a href> urls.  The string is pre-pended with
         an ampersand, so if there are no parameters on a given url, maybe add something bogus to the url prior to ${extra_parmas}
     '''
@@ -123,8 +114,7 @@
         extra_params = "{0}&_LOCALE_={1}".format(extra_params, loc)
 
     return extra_params
-%>
-</%def>
+%></%def>
 
 <%def name="pretty_date_from_ms(ms)"><%
     from ott.utils import date_utils
@@ -190,16 +180,14 @@
     </p>
 </%def>
 
-<%def name="compare_values(a, b)">
-<%
+<%def name="compare_values(a, b)"><%
     ret_val = False
     try:
         ret_val = float(a) == float(b)
     except:
         ret_val = a == b
     return ret_val
-%>
-</%def>
+%></%def>
 
 <%def name="or_bar(show_or=True)">
     %if show_or:

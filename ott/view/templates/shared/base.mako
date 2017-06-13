@@ -24,9 +24,7 @@
     %if breadcrumb_text and TODO:
     <p class="breadcrumb"><a href="${util.url_domain()}/index.htm">Home</a> : ${breadcrumb_text}</p>
     %endif
-    <h1>
-        ${header_text|n}
-    </h1>
+    <h1>${header_text|n}</h1>
     %if sub_header_text:
     <p class="h1sub">${sub_header_text|n}</p>
     %endif
