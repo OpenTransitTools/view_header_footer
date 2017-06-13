@@ -1,4 +1,6 @@
 ## -*- coding: utf-8 -*-
+import os
+
 from pyramid.request import Request
 from pyramid.httpexceptions import HTTPFound
 
@@ -63,8 +65,9 @@ def example(request):
 
     from pyramid.path import AssetResolver
     a = AssetResolver()
-    resolver = a.resolve('../../templates/shared/app/example.html')
-    cfg = {'output': resolver.abspath(),
+    resolver = a.resolve('ott.view:templates/shared/app/example.html')
+    file_path = resolver.abspath()
+    cfg = {'output': file_path,
             'inputs': [
                 {"url": header},
                 {"text": "You are special, my friend."},
