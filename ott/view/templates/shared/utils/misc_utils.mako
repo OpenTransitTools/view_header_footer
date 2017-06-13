@@ -3,11 +3,11 @@
     ret_val = def_val
     t = get_first_param_safe_str('title')
     if t:
-        ret_val = t.strip()
+        ret_val = t
     else:
         h = get_first_param_safe_str('header')
         if h:
-            ret_val = h.strip()
+            ret_val = h
     return ret_val
 %></%def>
 
