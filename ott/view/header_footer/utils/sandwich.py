@@ -1,3 +1,10 @@
+""" this is a simple command-line utility (that should work python 1.5+), which will pull different content from
+    either files or urls into a single output file.  The original intent is simply a way to update a template file
+    with an external header and footer derived from the view_header_footer app...
+
+    see the sandwich.conf .json file for inputs 
+"""
+
 import json
 import urllib2
 
@@ -34,12 +41,29 @@ def get_file_data(file_path, def_val=""):
     return ret_val
 
 
-cfg = get_json('sandwich.conf')
-with open(cfg.get('output'), 'w') as f:
-    for c in cfg.get('inputs'):
-        if c.get('url'):
-            d = get_url_data(c.get('url'))
-        elif c.get('file'):
-            d = get_file_data(c.get('file'))
-        if d:
-            f.write(d)
+def get_data(cfg, def_val=""):
+    ret_val = def_val
+    if cfg.get('url'):
+        data = get_url_data(cfg.get('url'), def_val)
+    elif cfg.get('file'):
+        data = get_file_data(cfg.get('file'), def_val)
+    elif cfg.get('text'):
+        data = cfg.get('text')
+    if data:
+        ret_val = data
+    return ret_val
+
+
+def sandwich(cfg_path='sandwich.conf'):
+    cfg = get_json(cfg_path)
+    with open(cfg.get('output'), 'w') as f:
+        for c in cfg.get('inputs'):
+            data = get_data(c)
+            f.write(data)
+
+
+def main():
+    sandwich()
+
+if __name__ == '__main__':
+    main()
