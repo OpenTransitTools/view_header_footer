@@ -45,6 +45,7 @@ lib64
 # Installer logs
 pip-log.txt
 output.html
+example.html
 
 # Unit test / coverage reports
 .coverage
