@@ -77,8 +77,11 @@ def sandwich_via_file(config_path='sandwich.conf'):
 
 def main():
     if len(sys.argv) >= 2:
+        sandwich_via_file(sys.argv[1])
+    else:
         sandwich_via_file()
-    print sys.argv
+
+
 
 if __name__ == '__main__':
     main()
