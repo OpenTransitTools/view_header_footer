@@ -42,9 +42,9 @@ def get_file_data(file_path, start, end, def_val=""):
     lines = []
     with open(file_path) as f:
         for i, l in enumerate(f):
-            if start and i+1 < start:
+            if start and i < start:
                 continue
-            if end and i+1 > end:
+            if end and i > end:
                 break
             lines.append(l)
 
