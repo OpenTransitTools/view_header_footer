@@ -77,26 +77,6 @@ def example(request):
     sandwich.sandwich(cfg)
     return {}
 
-def sexample(request):
-    ht = st = ""
-    #import pdb; pdb.set_trace()
-    do_fieldtrip = True
-    if do_fieldtrip:
-        import requests
-        c = requests.get("http://fieldtrip.trimet.org/fieldtrip/newRequestForm")
-        c = c.text[880:]
-        ht = html_utils.html_escape("Field Trip Request Form")
-        st = html_utils.html_escape("Complete and return this form to request a field trip if you wish to travel on TriMet with a group of 15 or more. __Trips **must*** be scheduled and paid for (if applicable) at least two weeks in advance___. If you have any questions, please email us at fieldtrips@trimet.org or call 503-962-2424, option 4.")
-    else:
-        c = web_utils.get_response("http://maps.trimet.org/ride/ws/stop.html?id=2")
-
-    ret_val = {
-        'header': h,
-        'footer': f,
-        'content': c
-    }
-    return ret_val
-
 
 @view_config(route_name='exception_mobile',  renderer='mobile/exception.html')
 @view_config(route_name='exception_desktop', renderer='desktop/exception.html')
