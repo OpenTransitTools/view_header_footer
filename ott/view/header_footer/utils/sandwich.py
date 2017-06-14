@@ -31,13 +31,20 @@ def get_url_data(url, def_val=""):
     return ret_val
 
 
-def get_file_data(file_path, def_val=""):
+def get_file_data(file_path, start, end, def_val=""):
     """ utility class to grab data from a file
     """
     ret_val = def_val
-    print "opening file {0}".format(file_path)
+    print "opening file {0} (start={1}, end={2})".format(file_path, start, end)
+
+    lines = []
     with open(file_path) as f:
-        ret_val = f.read()
+        for i, l in enumerate(f):
+            lines.append(l)
+
+    # step 2: list to string
+    if len(lines) > 0:
+        ret_val = '\n'.join(map(str, lines))
     return ret_val
 
 
@@ -46,7 +53,7 @@ def get_data(cfg, def_val=""):
     if cfg.get('url'):
         data = get_url_data(cfg.get('url'), def_val)
     elif cfg.get('file'):
-        data = get_file_data(cfg.get('file'), def_val)
+        data = get_file_data(cfg.get('file'), cfg.get('start'), cfg.get('end'), def_val)
     elif cfg.get('text'):
         data = cfg.get('text')
     if data:
