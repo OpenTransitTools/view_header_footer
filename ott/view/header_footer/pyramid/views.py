@@ -1,6 +1,4 @@
 ## -*- coding: utf-8 -*-
-import os
-
 from pyramid.request import Request
 from pyramid.httpexceptions import HTTPFound
 
@@ -11,16 +9,13 @@ from pyramid.events import NewRequest
 from pyramid.events import ApplicationCreated
 from pyramid.events import subscriber
 
-from ott.utils import web_utils
-from ott.utils import html_utils
-
 import logging
 log = logging.getLogger(__file__)
 
 
 def do_view_config(config):
-    ''' adds the views (see below) and static directories to pyramid's config
-    '''
+    """ adds the views (see below) and static directories to pyramid's config
+    """
     config.add_route('index_desktop',       '/')
     config.add_route('index_mobile',        '/m')
     config.add_route('exception_desktop',   '/exception.html')
@@ -57,22 +52,22 @@ def example(request):
     h = "This is a special page"
     s = "with an extra special formatting"
     if is_mobile(request):
-        header = "http://localhost:14141/m/header.html?header={}&second_header={}".format(h, s)
-        footer = "http://localhost:14141/m/footer.html"
+        head = "http://localhost:14141/m/header.html?header={}&second_header={}".format(h, s)
+        foot = "http://localhost:14141/m/footer.html"
     else:
-        header = "http://localhost:14141/header.html?header={}&second_header={}".format(h, s)
-        footer = "http://localhost:14141/footer.html"
+        head = "http://localhost:14141/header.html?header={}&second_header={}".format(h, s)
+        foot = "http://localhost:14141/footer.html"
 
     from pyramid.path import AssetResolver
     a = AssetResolver()
     resolver = a.resolve('ott.view:templates/shared/app/example.html')
     file_path = resolver.abspath()
     cfg = {'output': file_path,
-            'inputs': [
-                {"url": header},
+           'inputs': [
+                {"url": head},
                 {"text": "You are special, my friend."},
-                {"url": footer},
-           ]
+                {"url": foot}
+            ]
     }
     sandwich.sandwich(cfg)
     return {}
@@ -84,6 +79,7 @@ def handle_exception(request):
     ret_val = {}
     return ret_val
 
+
 @view_config(route_name='index_desktop', renderer='index.html')
 @view_config(route_name='index_mobile',  renderer='index.html')
 def index_view(request):
@@ -92,47 +88,49 @@ def index_view(request):
 
 @subscriber(ApplicationCreated)
 def application_created_subscriber(event):
-    '''
+    """
        what do i do?
 
        1. I'm called at startup of the Pyramid app.  
        2. I could be used to make db connection (pools), etc...
-    '''
+    """
     log.info('Starting pyramid server...')
 
 
 @subscriber(NewRequest)
 def new_request_subscriber(event):
-    '''
+    """
        what do i do?
 
        1. entry point for a new server request
        2. configure the request context object (can insert new things like db connections or authorization to pass around in this given request context)
-    '''
+    """
     log.debug("new request called -- request is 'started'")
     request = event.request
     request.add_finished_callback(cleanup)
 
+
 @notfound_view_config(renderer='shared/notfound.mako')
 def notfound(request):
-    '''
+    """
         render the notfound.mako page anytime a request comes in that
         the app does't have mapped to a page or method
-    '''
+    """
     return {}
 
-##
-## view utils
-##
+#
+# view utils below
+#
+
 
 def cleanup(request):
-    '''
+    """
        what do i do?
 
        1. I was configured via the new_request_subscriber(event) method
        2. I'm called via a server event (when a request is 'finished')
        3. I could do random cleanup tasks like close database connections, etc... 
-    '''
+    """
     log.debug("cleanup called -- request is 'finished'")
 
 
@@ -154,9 +152,9 @@ def forward_request(request, path, query_string=None, extra_params=None):
 
 
 def make_subrequest(request, path, query_string=None, extra_params=None):
-    ''' create a subrequest to call another page in the app...
+    """ create a subrequest to call another page in the app...
         http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/subrequest.html
-    '''
+    """
     # step 1: make a new request object...
     path = get_path(request, path)
     subreq = Request.blank(path)
@@ -165,7 +163,7 @@ def make_subrequest(request, path, query_string=None, extra_params=None):
     if query_string is None:
         query_string = request.query_string
 
-     # step 3: pre-pend any extra stuff to our querytring
+    # step 3: pre-pend any extra stuff to our querytring
     if extra_params:
         newqs = extra_params
         if len(query_string) > 0:

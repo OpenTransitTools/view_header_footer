@@ -55,7 +55,7 @@ def get_file_data(file_path, start, end, def_val=""):
 
 
 def get_data(cfg, def_val=""):
-    ret_val = def_val
+    ret_val = data = def_val
     if cfg.get('url'):
         data = get_url_data(cfg.get('url'), def_val)
     elif cfg.get('file'):
@@ -93,7 +93,6 @@ def main():
         sandwich_via_file(sys.argv[1])
     else:
         sandwich_via_file()
-
 
 
 if __name__ == '__main__':
