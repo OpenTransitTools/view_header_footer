@@ -33,13 +33,19 @@ def get_url_data(url, def_val=""):
 
 def get_file_data(file_path, start, end, def_val=""):
     """ utility class to grab data from a file
+        optional start and end points can be defined
     """
     ret_val = def_val
     print "opening file {0} (start={1}, end={2})".format(file_path, start, end)
 
+    # step 1: grab file line by line, and bound the output based on optional start or end points in the file
     lines = []
     with open(file_path) as f:
         for i, l in enumerate(f):
+            if start and i+1 < start:
+                continue
+            if end and i+1 > end:
+                break
             lines.append(l)
 
     # step 2: list to string
