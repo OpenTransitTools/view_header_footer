@@ -50,7 +50,7 @@ def get_file_data(file_path, start, end, def_val=""):
 
     # step 2: list to string
     if len(lines) > 0:
-        ret_val = '\n'.join(map(str, lines))
+        ret_val = ''.join(map(str, lines))
     return ret_val
 
 
