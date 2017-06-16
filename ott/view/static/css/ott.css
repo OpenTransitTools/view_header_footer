@@ -2146,7 +2146,7 @@ nav a:visited {
 
 @media screen and (max-width: 991px) {
     .nav-menu .float-left {
-        padding: 0 10px;
+        padding: 0 15px;
     }
 }
 
@@ -2173,11 +2173,11 @@ nav a:visited {
     }
 
     .navbar-toggle {
-        margin-top: 0px;
+        margin-top: -20px;
         width: 100%;
         margin-right: 0px;
         border-radius: 0px;
-        background-color: #fff;
+        background-color: rgba(225, 225, 215, 0.85);
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
     }
