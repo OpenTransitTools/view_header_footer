@@ -52,11 +52,11 @@ def example(request):
     h = "This is a special page"
     s = "with an extra special formatting"
     if is_mobile(request):
-        head = "http://localhost:14141/m/header.html?header={}&second_header={}".format(h, s)
-        foot = "http://localhost:14141/m/footer.html"
+        head = "{}/m/header.html?header={}&second_header={}".format(request.host_url, h, s)
+        foot = "{}/m/footer.html".format(request.host_url)
     else:
-        head = "http://localhost:14141/header.html?header={}&second_header={}".format(h, s)
-        foot = "http://localhost:14141/footer.html"
+        head = "{}/header.html?header={}&second_header={}".format(request.host_url, h, s)
+        foot = "{}/footer.html".format(request.host_url)
 
     from pyramid.path import AssetResolver
     a = AssetResolver()
