@@ -1279,7 +1279,7 @@ tbody.collapse.in {
 .navbar {
     position: relative;
     min-height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid transparent;
 }
 
@@ -1338,7 +1338,7 @@ tbody.collapse.in {
 @media (min-width: 768px) {
     .navbar-collapse {
         width: auto;
-        border-top: 0;
+        border-top: 1px;
         box-shadow: none;
     }
 
@@ -1896,7 +1896,7 @@ tbody.collapse.in {
 
 a {
     text-decoration: none;
-    color: #ee914b;
+    color: #0373ad;
     font-weight: 400;
 }
 
@@ -1925,27 +1925,27 @@ h3 {
 }
 
 .col-1 {
-    color: #f7ae56;
+    color: #3d9bf7;
 }
 
 .col-2 {
-    color: #c91e42;
+    color: #54c953;
 }
 
 .col-3 {
-    color: #60C6D5;
+    color: #b4d55c;
 }
 
 .col-4 {
-    color: #ee914b;
+    color: #ee8579;
 }
 
 .col-5 {
-    color: #66ad2a;
+    color: #ad5782;
 }
 
 .white-text {
-    color: #fff;
+    color: #c6aeff;
 }
 
 .center-text {
@@ -1996,7 +1996,7 @@ h3 {
     }
 
     .navbar-header {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .navbar-toggle {
@@ -2024,7 +2024,7 @@ h3 {
 
 #nav-menu-bar {
     border-top: 1px solid #000;
-    margin-top: 20px;
+    margin-top: 10px;
     background: rgba(255, 255, 255, 0.85);
 }
 
@@ -2046,58 +2046,58 @@ h3 {
 }
 
 .nav-menu .float-left:nth-child(1) a:hover {
-    color: #f7ae56;
+    color: #64a2f7;
 }
 
 .nav-menu .float-left:nth-child(1) .active {
-    color: #f7ae56;
+    color: #44f76f;
 }
 
 .nav-menu .float-left:nth-child(2) a:hover {
-    color: #c91e42;
+    color: #c3c930;
 }
 
 .nav-menu .float-left:nth-child(2) .active {
-    color: #c91e42;
+    color: #c98a2b;
 }
 
 .nav-menu .float-left:nth-child(3) a:hover {
-    color: #60C6D5;
+    color: #d54a40;
 }
 
 .nav-menu .float-left:nth-child(3) .active {
-    color: #60C6D5;
+    color: #d53291;
 }
 
 .nav-menu .float-left:nth-child(4) a:hover {
-    color: #ee914b;
+    color: #b458ee;
 }
 
 .nav-menu .float-left:nth-child(4) .active {
-    color: #ee914b;
+    color: #6316ee;
 }
 
 .nav-menu .float-left:nth-child(5) a:hover {
-    color: #66ad2a;
+    color: #0373ad;
 }
 
 .nav-menu .float-left:nth-child(5) .active {
-    color: #66ad2a;
+    color: #15ad04;
 }
 
 .nav-menu .float-left:nth-child(6) a:hover {
-    color: #9f5bcc;
+    color: #99cc06;
 }
 
 .nav-menu .float-left:nth-child(6) .active {
-    color: #9f5bcc;
+    color: #cc0513;
 }
 
 .logo-image {
     background-image: url(/images/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 280px;
+    width: 256px;
     height: 160px;
     margin: 0 auto;
 }
