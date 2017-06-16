@@ -28,6 +28,20 @@ body {
     background-color: #fff;
 }
 
+
+.standardheader {
+    text-align: center;
+}
+
+.standardheader h1 {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: 2px;
+    display: inline;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
 a {
     background-color: transparent;
 }
@@ -1055,6 +1069,7 @@ th {
 }
 
 /** NAV SECtiON **/
+/* some css borrowed from transitland and adapted for OTT*/
 
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
@@ -1338,7 +1353,6 @@ tbody.collapse.in {
 @media (min-width: 768px) {
     .navbar-collapse {
         width: auto;
-        border-top: 1px;
         box-shadow: none;
     }
 
@@ -1531,18 +1545,6 @@ tbody.collapse.in {
         padding-top: 15px;
         padding-bottom: 15px;
     }
-}
-
-.navbar-form {
-    margin-left: -15px;
-    margin-right: -15px;
-    padding: 10px 15px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-    margin-top: 8px;
-    margin-bottom: 8px;
 }
 
 @media (min-width: 768px) {
@@ -2023,9 +2025,8 @@ h3 {
 }
 
 #nav-menu-bar {
-    border-top: 1px solid #000;
     margin-top: 10px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(225, 225, 215, 0.85);
 }
 
 .navbar {
@@ -2103,14 +2104,14 @@ h3 {
 }
 
 .circle {
-    background-color: #fff;
+    background-color: #CCC;
     margin: 0 auto;
     border: 1px solid;
     border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     position: relative;
-    top: -4px;
+    top: -3px;
 }
 
 .float-left {

@@ -61,7 +61,7 @@ def example(request):
     from ott.view.header_footer.utils import sandwich
 
     h = "This is a special page"
-    s = "with an extra special formatting"
+    s = "with extra special formatting"
     if is_mobile(request):
         head = "{}/m/header.html?header={}&second_header={}".format(request.host_url, h, s)
         foot = "{}/m/footer.html".format(request.host_url)
