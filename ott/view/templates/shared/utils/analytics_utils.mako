@@ -2,7 +2,11 @@
 ##
 ## routines for making ga skinny
 ##
-<%def name="ga_init(account='UA-688646-3')">
+<%def name="ga_init()"><%
+    # TODO: grab ga number from config ... if no number, no GA
+    # TODO: update GA init code below...
+    account='UA-688646-3'
+%>
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '${account}']);
@@ -18,16 +22,7 @@
 
 #
 # event call to GA
-# _gaq.push(['_trackEvent', 'TripPlanner', 'Submit', ' Advanced Trip Planner submit']);
+# _gaq.push(['_trackEvent', 'Your App Name Here', 'Event Name (submit)', 'Longer Event Description Text']);
 #
 <%def name="event(app, evt, desc)">onClick="_gaq.push(['_trackEvent', '${app}', '${evt}', '${desc}']);"</%def>
-
-<%def name="empty_method()"></%def>
-<%def name="trip_submit()"><%event('TripPlanner', 'Submit', 'Trip Planner submit')%></%def>
-
-
-select_route=event('StopsStations', 'Submit', 'MainForm Select-a-line submit')
-find_stop=event('StopsStations', 'Submit', 'MainForm Search submit')
-trip_submit=event('TripPlanner', 'Submit', 'Trip Planner submit')
-trip_adv_submit=event('TripPlanner', 'Submit', 'Advanced Trip Planner submit')
-
+submit=event('OttHeaderFooter', 'Menu-Click', ' clicked the menu bar')
