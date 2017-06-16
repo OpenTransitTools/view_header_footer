@@ -8,9 +8,9 @@
 <%namespace name="util" file="/shared/utils/misc_utils.mako"/>
 ${util.time_stamp()}
 <head>
-    <meta name="robots" content="all"/>
-    ${self.meta_data()}
     <title>${self.title()|n,decode.utf8}</title>
+    ${self.meta_data()}
+    ${self.favicon()}
     ${self.app_css()}
     ${self.app_js()}
 </head>

@@ -1,5 +1,8 @@
 ## -*- coding: utf-8 -*-
+import os
+from pyramid.response import FileResponse
 from pyramid.request import Request
+from pyramid.path import AssetResolver
 from pyramid.httpexceptions import HTTPFound
 
 from pyramid.view import view_config
@@ -29,6 +32,8 @@ def do_view_config(config):
     config.add_route('example_desktop',     '/example.html')
     config.add_route('example_mobile',      '/m/example.html')
 
+    config.add_route('favicon',             '/favicon.ico')
+
 
 @view_config(route_name='header_desktop', renderer='desktop/header.html')
 @view_config(route_name='header_mobile', renderer='mobile/header.html')
@@ -42,6 +47,12 @@ def header(request):
 def footer(request):
     ret_val = {}
     return ret_val
+
+
+@view_config(route_name="favicon")
+def favicon_view(request):
+    icon = get_asset_path("static/images/favicon.ico")
+    return FileResponse(icon, request=request)
 
 
 @view_config(route_name='example_desktop', renderer='shared/app/example.html')
@@ -58,10 +69,7 @@ def example(request):
         head = "{}/header.html?header={}&second_header={}".format(request.host_url, h, s)
         foot = "{}/footer.html".format(request.host_url)
 
-    from pyramid.path import AssetResolver
-    a = AssetResolver()
-    resolver = a.resolve('ott.view:templates/shared/app/example.html')
-    file_path = resolver.abspath()
+    file_path = get_asset_path("templates/shared/app/example.html")
     cfg = {'output': file_path,
            'inputs': [
                 {"url": head},
@@ -121,6 +129,12 @@ def notfound(request):
 #
 # view utils below
 #
+
+def get_asset_path(asset):
+    a = AssetResolver()
+    resolver = a.resolve('ott.view:' + asset)
+    file_path = resolver.abspath()
+    return file_path
 
 
 def cleanup(request):

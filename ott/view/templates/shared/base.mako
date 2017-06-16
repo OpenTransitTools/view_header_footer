@@ -6,8 +6,14 @@
 <%def name="title()">${util.page_title('Transit Information')}</%def>
 
 <%def name="meta_data()">
+    <meta name="robots"      content="all"/>
     <meta name="Keywords"    content="Transit, Schedule, Information"/>
     <meta name="Description" content="Transit Information System"/>
+</%def>
+
+<%def name="favicon()">
+    <link rel="shortcut icon" href="${util.url_domain()}/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="${util.url_domain()}/favicon.ico" type="image/x-icon">
 </%def>
 
 <%def name="nav_bar()"></%def>
