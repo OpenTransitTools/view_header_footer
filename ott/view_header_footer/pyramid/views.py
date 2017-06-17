@@ -19,20 +19,20 @@ log = logging.getLogger(__file__)
 def do_view_config(config):
     """ adds the views (see below) and static directories to pyramid's config
     """
-    config.add_route('index_desktop',       '/')
-    config.add_route('index_mobile',        '/m')
-    config.add_route('exception_desktop',   '/exception.html')
-    config.add_route('exception_mobile',    '/m/exception.html')
+    config.add_route('index_desktop',     '/')
+    config.add_route('index_mobile',      '/m')
+    config.add_route('exception_desktop', '/exception.html')
+    config.add_route('exception_mobile',  '/m/exception.html')
 
-    config.add_route('header_desktop',      '/header.html')
-    config.add_route('header_mobile',       '/m/header.html')
-    config.add_route('footer_desktop',      '/footer.html')
-    config.add_route('footer_mobile',       '/m/footer.html')
+    config.add_route('header_desktop',    '/header.html')
+    config.add_route('header_mobile',     '/m/header.html')
+    config.add_route('footer_desktop',    '/footer.html')
+    config.add_route('footer_mobile',     '/m/footer.html')
 
-    config.add_route('example_desktop',     '/example.html')
-    config.add_route('example_mobile',      '/m/example.html')
+    config.add_route('example_desktop',   '/example.html')
+    config.add_route('example_mobile',    '/m/example.html')
 
-    config.add_route('favicon',             '/favicon.ico')
+    config.add_route('favicon',           '/favicon.ico')
 
 
 @view_config(route_name='header_desktop', renderer='desktop/header.html')
@@ -58,7 +58,7 @@ def favicon_view(request):
 @view_config(route_name='example_desktop', renderer='shared/app/example.html')
 @view_config(route_name='example_mobile',  renderer='shared/app/example.html')
 def example(request):
-    from ott.view.header_footer.utils import sandwich
+    from ott.view_header_footer.utils import sandwich
 
     h = "This is a special page"
     s = "with extra special formatting"
@@ -132,7 +132,7 @@ def notfound(request):
 
 def get_asset_path(asset):
     a = AssetResolver()
-    resolver = a.resolve('ott.view:' + asset)
+    resolver = a.resolve('ott.view_header_footer:' + asset)
     file_path = resolver.abspath()
     return file_path
 

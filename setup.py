@@ -1,5 +1,4 @@
 import os
-import sys
 import setuptools
 from setuptools import setup, find_packages
 setuptools.dist.Distribution(dict(setup_requires='Babel')) # for message_extractors line below (else warnings / errors)
@@ -67,9 +66,9 @@ setup(
     extras_require=dict(dev=dev_extras),
     message_extractors = find_translation_strings_in_these_files,
     tests_require=requires,
-    test_suite="ott.view",
+    test_suite="ott.view_header_footer",
     entry_points="""\
         [paste.app_factory]
-        main = ott.view.header_footer.pyramid.app:main
+        main = ott.view_header_footer.pyramid.app:main
     """,
 )

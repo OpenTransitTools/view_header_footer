@@ -5,7 +5,7 @@ from pyramid.events import subscriber
 from pyramid.events import ApplicationCreated
 from pyramid.events import NewRequest
 
-from ott.view.header_footer.pyramid import views
+from ott.view_header_footer.pyramid import views
 
 import logging
 log = logging.getLogger(__file__)
@@ -16,11 +16,11 @@ def do_static_config(config):
     """
     cache_age = 3600
 
-    config.add_static_view('static',    'ott.view:static',        cache_max_age=cache_age)
-    config.add_static_view('html',      'ott.view:static',        cache_max_age=cache_age)
-    config.add_static_view('js',        'ott.view:static/js',     cache_max_age=cache_age)
-    config.add_static_view('css',       'ott.view:static/css',    cache_max_age=cache_age)
-    config.add_static_view('images',    'ott.view:static/images', cache_max_age=cache_age)
+    config.add_static_view('static', 'ott.view_header_footer:static', cache_max_age=cache_age)
+    config.add_static_view('html',   'ott.view_header_footer:static', cache_max_age=cache_age)
+    config.add_static_view('js',     'ott.view_header_footer:static/js', cache_max_age=cache_age)
+    config.add_static_view('css',    'ott.view_header_footer:static/css', cache_max_age=cache_age)
+    config.add_static_view('images', 'ott.view_header_footer:static/images', cache_max_age=cache_age)
 
     # important ... allow .html extension on mako templates
     config.include('pyramid_mako')
