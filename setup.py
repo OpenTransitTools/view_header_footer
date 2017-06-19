@@ -64,7 +64,7 @@ setup(
     zip_safe=False,
     install_requires=requires,
     extras_require=dict(dev=dev_extras),
-    message_extractors = find_translation_strings_in_these_files,
+    message_extractors=find_translation_strings_in_these_files,
     tests_require=requires,
     test_suite="ott.view_header_footer",
     entry_points="""\

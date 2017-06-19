@@ -1,4 +1,4 @@
-recursive-include ott/view/config *
-recursive-include ott/view/templates *
-recursive-include ott/view/locale *
-recursive-include ott/view/static *
+recursive-include ott/view_header_footer/config *
+recursive-include ott/view_header_footer/templates *
+recursive-include ott/view_header_footer/locale *
+recursive-include ott/view_header_footer/static *
