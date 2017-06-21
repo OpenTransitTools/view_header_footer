@@ -11,6 +11,19 @@ import logging
 log = logging.getLogger(__file__)
 
 
+def main(global_config, **settings):
+    """ This function returns a Pyramid WSGI application.
+        run with: bin/pserve pyramid.ini --reload
+    """
+    config = Configurator(settings=settings)
+
+    do_static_config(config)
+    config.include(views.do_view_config)
+    config.scan('ott.view_header_footer.pyramid')
+
+    return config.make_wsgi_app()
+
+
 def do_static_config(config):
     """ config the static folders
     """
@@ -55,14 +68,3 @@ def new_request_subscriber(event):
     request.BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-def main(global_config, **settings):
-    """ This function returns a Pyramid WSGI application.
-        run with: bin/pserve pyramid.ini --reload
-    """
-    config = Configurator(settings=settings)
-
-    do_static_config(config)
-    views.do_view_config(config)
-
-    config.scan()
-    return config.make_wsgi_app()
