@@ -1,5 +1,5 @@
 ## -*- coding: utf-8 -*-
-<%namespace name="util" file="/shared/utils/misc_utils.mako"/>
+<%namespace name="util" file="/shared/utils/hf_utils.mako"/>
 ##
 ## BELOW ARE THE ABSTRACT METHODS (to be overridden by sub-classed templates) that populate this base page
 ##

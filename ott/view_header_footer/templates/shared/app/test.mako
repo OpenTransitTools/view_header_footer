@@ -1,7 +1,7 @@
 <%inherit file="../base_header.html"/>
 <%def name="title()">Open Trip Tools</%def>
 
-<%namespace name="util"  file="/shared/utils/misc_utils.mako"/>
+<%namespace name="util"  file="/shared/utils/hf_utils.mako"/>
 <%
     extra_params = util.get_extra_params()
     rel_path='./'
