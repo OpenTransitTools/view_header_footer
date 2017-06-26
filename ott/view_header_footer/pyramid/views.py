@@ -51,7 +51,11 @@ def footer(request):
 
 @view_config(route_name="favicon")
 def favicon_view(request):
-    icon = get_asset_path("static/images/favicon.ico")
+    try:
+        icon = get_asset_path("static/images/favicon.ico")
+    except:
+        log.warn("no static/images/favicon.ico available, so trying ")
+        icon = get_asset_path("static/hf_images/favicon.ico")
     return FileResponse(icon, request=request)
 
 
@@ -130,9 +134,9 @@ def notfound(request):
 # view utils below
 #
 
-def get_asset_path(asset):
+def get_asset_path(asset, pkg='ott.view_header_footer:'):
     a = AssetResolver()
-    resolver = a.resolve('ott.view_header_footer:' + asset)
+    resolver = a.resolve(pkg + asset)
     file_path = resolver.abspath()
     return file_path
 
