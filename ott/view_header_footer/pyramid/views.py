@@ -19,6 +19,8 @@ log = logging.getLogger(__file__)
 def do_view_config(config):
     """ adds the views (see below) and static directories to pyramid's config
     """
+    # import pdb; pdb.set_trace()
+
     config.add_route('hf_index_desktop',     '/')
     config.add_route('hf_index_mobile',      '/m')
     config.add_route('hf_exception_desktop', '/exception.html')
