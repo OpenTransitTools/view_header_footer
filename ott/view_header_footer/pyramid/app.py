@@ -29,11 +29,11 @@ def do_static_config(config):
     """
     cache_age = 3600
 
-    config.add_static_view('static', 'ott.view_header_footer:static', cache_max_age=cache_age)
-    config.add_static_view('html',   'ott.view_header_footer:static', cache_max_age=cache_age)
-    config.add_static_view('js',     'ott.view_header_footer:static/js', cache_max_age=cache_age)
-    config.add_static_view('css',    'ott.view_header_footer:static/css', cache_max_age=cache_age)
-    config.add_static_view('images', 'ott.view_header_footer:static/images', cache_max_age=cache_age)
+    config.add_static_view('hf_static', 'ott.view_header_footer:static', cache_max_age=cache_age)
+    config.add_static_view('hf_html',   'ott.view_header_footer:static', cache_max_age=cache_age)
+    config.add_static_view('hf_js',     'ott.view_header_footer:static/hf_js', cache_max_age=cache_age)
+    config.add_static_view('hf_css',    'ott.view_header_footer:static/hf_css', cache_max_age=cache_age)
+    config.add_static_view('hf_images', 'ott.view_header_footer:static/hf_images', cache_max_age=cache_age)
 
     # important ... allow .html extension on mako templates
     config.include('pyramid_mako')
