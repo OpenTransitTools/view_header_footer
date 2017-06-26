@@ -12,6 +12,8 @@ from pyramid.events import NewRequest
 from pyramid.events import ApplicationCreated
 from pyramid.events import subscriber
 
+from ott.utils import file_utils
+
 import logging
 log = logging.getLogger(__file__)
 
@@ -53,9 +55,8 @@ def footer(request):
 
 @view_config(route_name="favicon")
 def favicon_view(request):
-    try:
-        icon = get_asset_path("static/images/favicon.ico")
-    except:
+    icon = get_asset_path("static/images/favicon.ico")
+    if not file_utils.exists(icon):
         log.warn("no static/images/favicon.ico available, so trying ")
         icon = get_asset_path("static/hf_images/favicon.ico")
     return FileResponse(icon, request=request)
