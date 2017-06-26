@@ -19,6 +19,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
 
     do_static_config(config)
+    do_misc_config(config)
     config.include(views.do_view_config)
     config.scan('ott.view_header_footer.pyramid')
 
@@ -36,6 +37,8 @@ def do_static_config(config):
     config.add_static_view('hf_css',    'ott.view_header_footer:static/hf_css', cache_max_age=cache_age)
     config.add_static_view('hf_images', 'ott.view_header_footer:static/hf_images', cache_max_age=cache_age)
 
+
+def do_misc_config(config):
     # important ... allow .html extension on mako templates
     config.include('pyramid_mako')
     config.add_mako_renderer('.html', settings_prefix='mako.')
