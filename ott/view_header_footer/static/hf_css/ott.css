@@ -2111,7 +2111,7 @@ h3 {
 }
 
 .logo-image {
-    background-image: url(/images/logo.png);
+    background-image: url(/hf_images/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 256px;
