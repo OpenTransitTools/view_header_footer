@@ -2067,47 +2067,63 @@ h3 {
 }
 
 .nav-menu .float-left:nth-child(1) .active {
-    color: #44f76f;
+    color: #0543f7;
 }
 
 .nav-menu .float-left:nth-child(2) a:hover {
-    color: #c3c930;
+    color: #5bc2c9;
 }
 
 .nav-menu .float-left:nth-child(2) .active {
-    color: #c98a2b;
+    color: #06c9aa;
 }
 
 .nav-menu .float-left:nth-child(3) a:hover {
-    color: #d54a40;
+    color: #9cd597;
 }
 
 .nav-menu .float-left:nth-child(3) .active {
-    color: #d53291;
+    color: #40d526;
 }
 
 .nav-menu .float-left:nth-child(4) a:hover {
-    color: #b458ee;
+    color: #eeba58;
 }
 
 .nav-menu .float-left:nth-child(4) .active {
-    color: #6316ee;
+    color: #ecee0c;
 }
 
 .nav-menu .float-left:nth-child(5) a:hover {
-    color: #0373ad;
+    color: #ad695c;
 }
 
 .nav-menu .float-left:nth-child(5) .active {
-    color: #15ad04;
+    color: #ad310f;
 }
 
 .nav-menu .float-left:nth-child(6) a:hover {
-    color: #99cc06;
+    color: #cc81a4;
 }
 
 .nav-menu .float-left:nth-child(6) .active {
-    color: #cc0513;
+    color: #cc1682;
+}
+
+.nav-menu .float-left:nth-child(7) a:hover {
+    color: #af7fcc;
+}
+
+.nav-menu .float-left:nth-child(7) .active {
+    color: #841bcc;
+}
+
+.nav-menu .float-left:nth-child(8) a:hover {
+    color: #7e7ccc;
+}
+
+.nav-menu .float-left:nth-child(8) .active {
+    color: #4d53cc;
 }
 
 .logo-image {
