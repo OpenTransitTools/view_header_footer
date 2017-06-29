@@ -11,8 +11,8 @@ ${util.time_stamp()}
     <title>${self.title()|n,decode.utf8}</title>
     ${self.meta_data()}
     ${self.favicon()}
-    ${self.app_css()}
-    ${self.app_js()}
+    ${self.hf_includes()}
+    ${self.app_includes()}
 </head>
 <body class="env-develop" id="top" onLoad="${self.js_onload()}">
     <div id="application">
