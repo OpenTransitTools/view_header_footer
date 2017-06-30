@@ -23,10 +23,13 @@ def do_view_config(config):
     """
     # import pdb; pdb.set_trace()
 
-    config.add_route('hf_index_desktop',     '/')
-    config.add_route('hf_index_mobile',      '/m')
-    config.add_route('hf_exception_desktop', '/exception.html')
-    config.add_route('hf_exception_mobile',  '/m/exception.html')
+    config.add_route('hf_index_desktop',      '/')
+    config.add_route('hf_index_html_desktop', '/index.html')
+    config.add_route('hf_index_mobile',       '/m')
+    config.add_route('hf_index_html_mobile',  '/m/index.html')
+
+    config.add_route('hf_exception_desktop',  '/exception.html')
+    config.add_route('hf_exception_mobile',   '/m/exception.html')
 
     config.add_route('header_desktop',    '/header.html')
     config.add_route('header_mobile',     '/m/header.html')
@@ -97,6 +100,8 @@ def handle_exception(request):
 
 @view_config(route_name='hf_index_desktop', renderer='index.html')
 @view_config(route_name='hf_index_mobile',  renderer='index.html')
+@view_config(route_name='hf_index_html_desktop', renderer='index.html')
+@view_config(route_name='hf_index_html_mobile',  renderer='index.html')
 def index_view(request):
     return {}
 

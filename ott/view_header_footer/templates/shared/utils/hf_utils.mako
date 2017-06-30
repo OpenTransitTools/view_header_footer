@@ -28,7 +28,7 @@
     return ret_val
 %></%def>
 
-<%def name="url_domain()"><% return get_ini_param('ott.css_url', '') %></%def>
+<%def name="url_domain()"><% return get_ini_param('ott.url_domain', '') %></%def>
 <%def name="is_test()"><% return get_ini_param('ott.is_test') %></%def>
 
 
@@ -53,7 +53,6 @@
     return ret_val
 %></%def>
 
-
 <%def name="get_locale(def_val='en')"><%
     from ott.utils import html_utils
     ret_val = def_val
@@ -72,7 +71,7 @@
     '''
     extra_params=def_val
 
-    # step 1: append any locale url param to extra_params... 
+    # step 1: append any locale url param to extra_params...
     loc = get_locale(None)
     if loc:
         extra_params = "{0}&_LOCALE_={1}".format(extra_params, loc)
