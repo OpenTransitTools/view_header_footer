@@ -65,7 +65,7 @@
 </%def>
 
 
-<%def name="hf_includes()"><!--ABSTRACT hf_includes()--></%def>
-<%def name="app_includes()"><!--ABSTRACT app_includes()--></%def>
+<%def name="hf_include()"><!--ABSTRACT hf_include()--></%def>
+<%def name="app_include()"><!--ABSTRACT app_include()--></%def>
 <%def name="js_onload()">/** ABSTRACT js_onload() **/</%def>
 ${next.body()}
