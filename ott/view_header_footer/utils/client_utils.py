@@ -1,4 +1,4 @@
-""" this
+""" this is a utility to work with the header and footer service, and download
 
     see the sandwich.conf .json file for inputs 
 """

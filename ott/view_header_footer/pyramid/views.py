@@ -36,10 +36,13 @@ def do_view_config(config):
     config.add_route('footer_desktop',    '/footer.html')
     config.add_route('footer_mobile',     '/m/footer.html')
 
-    config.add_route('example_desktop',   '/example.html')
-    config.add_route('example_mobile',    '/m/example.html')
-
     config.add_route('favicon',           '/favicon.ico')
+
+    config.add_route('sandwich_example_desktop', '/sandwich.html')
+    config.add_route('sandwich_example_mobile',  '/m/sandwich.html')
+
+    config.add_route('page_example_desktop', '/example.html')
+    config.add_route('page_example_mobile',  '/m/example.html')
 
 
 @view_config(route_name='header_desktop', renderer='desktop/header.html')
@@ -65,9 +68,9 @@ def favicon_view(request):
     return FileResponse(icon, request=request)
 
 
-@view_config(route_name='example_desktop', renderer='shared/app/example.html')
-@view_config(route_name='example_mobile',  renderer='shared/app/example.html')
-def example(request):
+@view_config(route_name='sandwich_example_desktop', renderer='shared/app/sandwich_example.html')
+@view_config(route_name='sandwich_example_mobile',  renderer='shared/app/sandwich_example.html')
+def sandwich(request):
     from ott.view_header_footer.utils import sandwich
 
     h = "This is a special page"
@@ -79,7 +82,7 @@ def example(request):
         head = "{}/header.html?header={}&second_header={}".format(request.host_url, h, s)
         foot = "{}/footer.html".format(request.host_url)
 
-    file_path = get_asset_path("templates/shared/app/example.html")
+    file_path = get_asset_path("templates/shared/app/sandwich_example.html")
     cfg = {'output': file_path,
            'inputs': [
                 {"url": head},
@@ -89,6 +92,13 @@ def example(request):
     }
     sandwich.sandwich(cfg)
     return {}
+
+
+@view_config(route_name='page_example_desktop', renderer='shared/app/page_example.mako')
+@view_config(route_name='page_example_mobile',  renderer='shared/app/page_example.mako')
+def example(request):
+    return {}
+
 
 
 @view_config(route_name='hf_exception_mobile',  renderer='mobile/exception.html')

@@ -20,7 +20,7 @@
         {'label': 'Examples'},
         {'u':'example.html', 'p':'', 'n':'page example using header & footer client utils'},
         {'u':'sandwich.html', 'p':'', 'n':'sandwich example app using sandwich utils and config'},
-    ]
+    ] 
 %>
     <button onclick="location.href='.'">ENGLISH</button> <button onclick="location.href='.?_LOCALE_=es'">SPANISH</button> <button onclick="location.href='.?mobile=1${extra_params}'">MOBILE</button>
     <br/>
