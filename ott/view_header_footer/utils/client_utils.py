@@ -1,27 +1,15 @@
-""" this is a utility to work with the header and footer service, and download
-
-    see the sandwich.conf .json file for inputs 
+""" this is a utility to make calls into the header and footer server, and return
+    strings representing the header and footer...
 """
 import sys
-import json
 import urllib2
 
 
-def get_local_header(domain="localhost", port="14441", path="header.html", is_mobile=False,
-                     title=None, header=None, sub_header=None, second_header=None,
-                     def_val=""):
-    """ utility class curl a page header from the system
-    """
+def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
     ret_val = def_val
 
     if is_mobile:
         path = "m/{}".format(path)
-
-    params = ""
-    if title:         params = "{}&title={}".format(params, title)
-    if header:        params = "{}&header={}".format(params, header)
-    if sub_header:    params = "{}&sub_header={}".format(params, sub_header)
-    if second_header: params = "{}&second_header={}".format(params, second_header)
 
     url = "http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
     print "downloading {0}".format(url)
@@ -32,11 +20,36 @@ def get_local_header(domain="localhost", port="14441", path="header.html", is_mo
     return ret_val
 
 
+def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=False,
+                     title=None, header=None, sub_header=None, second_header=None,
+                     def_val=""):
+    """ utility class curl a page header from the system
+    """
+    params = ""
+    if title:         params = "{}&title={}".format(params, title)
+    if header:        params = "{}&header={}".format(params, header)
+    if sub_header:    params = "{}&sub_header={}".format(params, sub_header)
+    if second_header: params = "{}&second_header={}".format(params, second_header)
+
+    html = wget_stuff(domain, port, path, is_mobile, params, def_val)
+    return html
+
+
+def wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=False, def_val=""):
+    """ utility class curl a page header from the system
+    """
+    params = ""
+    #if title:         params = "{}&title={}".format(params, title)
+
+    html = wget_stuff(domain, port, path, is_mobile, params, def_val)
+    return html
+
+
 def main():
     if len(sys.argv) >= 2:
-        html = get_local_header(header=sys.argv[1])
+        html = wget_header(header=sys.argv[1])
     else:
-        html = get_local_header()
+        html = wget_header()
     print html
 
 
