@@ -1,7 +1,7 @@
 ## -*- coding: utf-8 -*-
 <%
     from ott.view_header_footer.utils import client_utils
-    header = client_utils.wget_header(port=request.server_port, header="Stop [XXX](/sandwich.html)")
+    header = client_utils.wget_header(port=request.server_port, header="Stop [XXX](/sandwich.html)", sub_header="Great Stop")
     footer = client_utils.wget_footer(port=request.server_port)
 
 %>${header|n}
