@@ -5,7 +5,7 @@
     if t:
         ret_val = t
     else:
-        h = get_first_param_safe_str('header')
+        h = get_first_param_safe_str('header', strip_url=True)
         if h:
             ret_val = h
     return ret_val
@@ -32,9 +32,9 @@
 <%def name="is_test()"><% return get_ini_param('ott.is_test') %></%def>
 
 
-<%def name="get_first_param_safe_str(param_name, max_len=60, def_val=None)"><%
+<%def name="get_first_param_safe_str(param_name, max_len=60, strip_url=False, def_val=None)"><%
     from ott.utils import html_utils
-    return html_utils.get_first_param_safe_str(request, param_name, max_len, def_val)
+    return html_utils.get_first_param_safe_str(request, param_name, max_len, strip_url, def_val)
 %></%def>
 
 
