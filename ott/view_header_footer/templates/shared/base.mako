@@ -23,6 +23,8 @@
     header_text = util.page_header()
     sub_header_text = util.page_sub_header()
     second_header_text = util.page_second_header()
+    icon_cls = util.page_icon_cls()
+    icon_url = util.page_icon_url()
 %>
 %if header_text:
 <!-- Header start -->
@@ -30,7 +32,18 @@
     %if breadcrumb_text and TODO:
     <p class="breadcrumb"><a href="${util.url_domain()}/index.htm">Home</a> : ${breadcrumb_text}</p>
     %endif
+    %if icon_cls:
+    <h1>
+        %if icon_url:
+        <a class="${icon_cls}" href="${icon_url}"></a>
+        %else:
+        <i class="${icon_cls}"></i>
+        %endif
+        ${header_text|n}
+    </h1>
+    %else:
     <h1>${header_text|n}</h1>
+    %endif
     %if sub_header_text:
     <p class="h1sub">${sub_header_text|n}</p>
     %endif
