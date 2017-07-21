@@ -23,6 +23,7 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
 def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=False,
                 title=None, header=None, sub_header=None, second_header=None,
                 icon_cls=None, icon_url=None,
+                onload=None,
                 def_val=""):
     """ utility class curl a page header from the system
     """
@@ -33,6 +34,7 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
     if second_header: params = "{}&second_header={}".format(params, second_header)
     if icon_cls:      params = "{}&icon_cls={}".format(params, icon_cls)
     if icon_url:      params = "{}&icon_url={}".format(params, icon_url)
+    if onload:        params = "{}&onload={}".format(params, onload)
 
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html

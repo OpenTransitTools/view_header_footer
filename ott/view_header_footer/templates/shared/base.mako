@@ -7,7 +7,7 @@
 
 <%def name="meta_data()">
     <meta name="robots"      content="all"/>
-    <meta name="Keywords"    content="Transit, Schedule, Information"/>
+    <meta name="Keywords"    content="Transit, Schedule, Information, Trip Planning"/>
     <meta name="Description" content="Transit Information System"/>
 </%def>
 
@@ -18,8 +18,7 @@
 
 <%def name="nav_bar()"></%def>
 
-<%def name="page_header()">
-<%
+<%def name="page_header()"><%
     header_text = util.page_header()
     sub_header_text = util.page_sub_header()
     second_header_text = util.page_second_header()
@@ -58,8 +57,7 @@
 </%def>
 
 
-<%def name="emergency_content()">
-<%
+<%def name="emergency_content()"><%
     em_content = util.emergency_content()
     em_type = util.emergency_type()
 %>
@@ -77,8 +75,14 @@
 %endif
 </%def>
 
+<%def name="js_onload()"><%
+    onload_function = util.page_onload()
+    ret_val = "/** ABSTRACT **/"
+    if onload_function:
+        ret_val = "javascript:{}()".format(onload_function)
+    return ret_val
+%></%def>
 
 <%def name="hf_include()"><!--ABSTRACT hf_include()--></%def>
 <%def name="app_include()"><!--ABSTRACT app_include()--></%def>
-<%def name="js_onload()">/** ABSTRACT js_onload() **/</%def>
 ${next.body()}

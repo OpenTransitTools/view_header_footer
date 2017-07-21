@@ -16,6 +16,7 @@
 <%def name="page_second_header(def_val=None)"><% return get_first_param_safe_str('second_header', 200, def_val)%></%def>
 <%def name="page_icon_cls(def_val=None)"><% return get_first_param_safe_str('icon_cls', 60, def_val)%></%def>
 <%def name="page_icon_url(def_val=None)"><% return get_first_param_safe_str('icon_url', 200, def_val)%></%def>
+<%def name="page_onload()"><% return get_first_param_safe_str('onload')%></%def>
 
 <%def name="emergency_content(def_val=None)"><% return get_first_param_safe_str('emergency_content', 200, def_val)%></%def>
 <%def name="emergency_type(def_val='caution')"><% return get_first_param_safe_str('emergency_type', 30, def_val)%></%def>
