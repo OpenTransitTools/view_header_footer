@@ -44,8 +44,6 @@ def wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=
     """ utility class curl a page header from the system
     """
     params = ""
-    #if title:         params = "{}&title={}".format(params, title)
-
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html
 
