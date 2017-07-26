@@ -20,10 +20,10 @@
 </script>
 </%def>
 
-#
-# event call to GA
-# _gaq.push(['_trackEvent', 'Your App Name Here', 'Event Name (submit)', 'Longer Event Description Text']);
-#
+##
+## event call to GA
+## _gaq.push(['_trackEvent', 'Your App Name Here', 'Event Name (submit)', 'Longer Event Description Text']);
+##
 <%def name="event(app, evt, desc)">onClick="_gaq.push(['_trackEvent', '${app}', '${evt}', '${desc}']);"</%def>
 submit=event('OttHeaderFooter', 'Menu-Click', ' clicked the menu bar')
 
