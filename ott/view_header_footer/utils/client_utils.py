@@ -1,8 +1,18 @@
+# -*- coding: utf-8 -*-
+
 """ this is a utility to make calls into the header and footer server, and return
     strings representing the header and footer...
 """
 import sys
 import urllib2
+
+
+def url_open(url):
+    opener = urllib2.build_opener()
+    opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+    opener.addheaders = [('Accept-Charset', 'utf-8')]
+    f = opener.open(url)
+    return f
 
 
 def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
@@ -11,9 +21,10 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
     if is_mobile:
         path = "m/{}".format(path)
 
-    url = "http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
-    print "downloading {0}".format(url)
-    response = urllib2.urlopen(url.replace(" ", "%20"))
+    url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params).replace(" ", "%20")
+    print u"downloading {0}".format(url)
+    response = urllib2.urlopen(url)
+    #response = url_open(url)
     html = response.read()
     if html and len(html) > 0:
         ret_val = html.strip()
@@ -28,13 +39,13 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
     """ utility class curl a page header from the system
     """
     params = ""
-    if title:         params = "{}&title={}".format(params, title)
-    if header:        params = "{}&header={}".format(params, header)
-    if sub_header:    params = "{}&sub_header={}".format(params, sub_header)
-    if second_header: params = "{}&second_header={}".format(params, second_header)
-    if icon_cls:      params = "{}&icon_cls={}".format(params, icon_cls)
-    if icon_url:      params = "{}&icon_url={}".format(params, icon_url)
-    if onload:        params = "{}&onload={}".format(params, onload)
+    if title:         params = u"{}&title={}".format(params, title)
+    if header:        params = u"{}&header={}".format(params, header)
+    if sub_header:    params = u"{}&sub_header={}".format(params, sub_header)
+    if second_header: params = u"{}&second_header={}".format(params, second_header)
+    if icon_cls:      params = u"{}&icon_cls={}".format(params, icon_cls)
+    if icon_url:      params = u"{}&icon_url={}".format(params, icon_url)
+    if onload:        params = u"{}&onload={}".format(params, onload)
 
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html
