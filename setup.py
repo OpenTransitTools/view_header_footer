@@ -14,6 +14,7 @@ requires = [
     'lingua',
     'pyramid < 1.8',
     'pyramid_mako',
+    'pyramid_exclog',
     'mako',
     'waitress',
     'requests'
