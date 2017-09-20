@@ -1,5 +1,5 @@
-## -*- coding: utf-8 -*-
-import os
+# -*- coding: utf-8 -*-
+
 from pyramid.response import FileResponse
 from pyramid.request import Request
 from pyramid.path import AssetResolver
