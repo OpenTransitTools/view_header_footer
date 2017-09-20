@@ -8,9 +8,23 @@ import urllib2
 
 
 def clean_str(s):
-    ret_val = s
-    if s and len(s) > 0:
-        ret_val = s.decode('utf-8')
+    ret_val = decode(s)
+    return ret_val
+
+
+def decode(str, codec='utf-8'):
+    try:
+        ret_val = str.decode(codec)
+    except:
+        ret_val = str
+    return ret_val
+
+
+def encode(str, codec='utf-8'):
+    try:
+        ret_val = str.encode(codec)
+    except:
+        ret_val = str
     return ret_val
 
 
@@ -23,7 +37,7 @@ def append_get_param(params, param_name, param_val):
     ret_val = params
 
     if param_name and param_val:
-        ret_val = u"{}&{}={}".format(params, param_name, param_val.replace(" ", "%20").decode('utf-8'))
+        ret_val = u"{}&{}={}".format(params, param_name, decode(param_val.replace(" ", "%20")))
     return ret_val
 
 
@@ -40,7 +54,7 @@ def url_open(url):
 def url_open(url):
     """ downloader that opens a URL (or IRL) """
     print u"downloading {0}".format(url)
-    url = url.encode('utf-8')
+    url = encode(url)
     response = urllib2.urlopen(url)
     return response
 
@@ -68,7 +82,6 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
     """ utility class curl a page header from the system
     """
     params = u""
-    html = u""
     if title: params = append_get_param(params, 'title', title)
     if header: params = append_get_param(params, 'header', header)
     if sub_header: params = append_get_param(params, 'sub_header', sub_header)
@@ -77,6 +90,7 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
     if icon_url: params = append_get_param(params, 'icon_url', icon_url)
     if onload: params = append_get_param(params, 'onload', onload)
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
+    html = decode(html)
     return html
 
 
