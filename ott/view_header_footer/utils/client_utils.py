@@ -7,6 +7,12 @@ import sys
 import urllib2
 
 
+def clean_str(s):
+    ret_val = s
+    if s and len(s) > 0:
+        ret_val = s.decode('utf-8')
+    return ret_val
+
 def url_open(url):
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
