@@ -43,8 +43,8 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
 
     url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
     print u"downloading {0}".format(url)
-    """
     response = urllib2.urlopen(url)
+    """
     #response = url_open(url)
     html = response.read()
     if html and len(html) > 0:
