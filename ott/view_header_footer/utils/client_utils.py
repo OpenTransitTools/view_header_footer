@@ -7,7 +7,29 @@ import sys
 import urllib2
 
 
+def clean_str(s):
+    ret_val = s
+    if s and len(s) > 0:
+        ret_val = s.decode('utf-8')
+    return ret_val
+
+
+def append_get_param(params, param_name, param_val):
+    """ append a new url GET param to a string of such params, ala "?x=VAL&y=VAL&etc=..."
+        NOTE: stupid crap you have to jump thru for utf-8 strings
+    """
+    if params is None:
+        params = u""
+    ret_val = params
+
+    if param_name and param_val:
+        ret_val = u"{}&{}={}".format(params, param_name, param_val.replace(" ", "%20").decode('utf-8'))
+    return ret_val
+
+
 def url_open(url):
+    """ untested / unused downloader """
+    print u"downloading {0}".format(url)
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     opener.addheaders = [('Accept-Charset', 'utf-8')]
@@ -15,19 +37,26 @@ def url_open(url):
     return f
 
 
+def url_open(url):
+    """ downloader that opens a URL (or IRL) """
+    print u"downloading {0}".format(url)
+    url = url.encode('utf-8')
+    response = urllib2.urlopen(url)
+    return response
+
+
 def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
     ret_val = def_val
 
     if is_mobile:
-        path = "m/{}".format(path)
+        path = u"m/{}".format(path)
 
-    url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params).replace(" ", "%20")
-    print u"downloading {0}".format(url)
-    response = urllib2.urlopen(url)
-    #response = url_open(url)
+    url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
+    response = url_open(url)
     html = response.read()
     if html and len(html) > 0:
         ret_val = html.strip()
+
     return ret_val
 
 
@@ -38,15 +67,15 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
                 def_val=""):
     """ utility class curl a page header from the system
     """
-    params = ""
-    if title:         params = u"{}&title={}".format(params, title)
-    if header:        params = u"{}&header={}".format(params, header)
-    if sub_header:    params = u"{}&sub_header={}".format(params, sub_header)
-    if second_header: params = u"{}&second_header={}".format(params, second_header)
-    if icon_cls:      params = u"{}&icon_cls={}".format(params, icon_cls)
-    if icon_url:      params = u"{}&icon_url={}".format(params, icon_url)
-    if onload:        params = u"{}&onload={}".format(params, onload)
-
+    params = u""
+    html = u""
+    if title: params = append_get_param(params, 'title', title)
+    if header: params = append_get_param(params, 'header', header)
+    if sub_header: params = append_get_param(params, 'sub_header', sub_header)
+    if second_header: params = append_get_param(params, 'second_header', second_header)
+    if icon_cls: params = append_get_param(params, 'icon_cls', icon_cls)
+    if icon_url: params = append_get_param(params, 'icon_url', icon_url)
+    if onload: params = append_get_param(params, 'onload', onload)
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html
 

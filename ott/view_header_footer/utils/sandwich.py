@@ -24,7 +24,6 @@ def get_url_data(url, def_val=""):
     ret_val = def_val
 
     print "downloading {0}".format(url)
-    # import pdb; pdb.set_trace()
     response = urllib2.urlopen(url.replace(" ", "%20"))
     html = response.read()
     if html:

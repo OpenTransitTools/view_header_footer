@@ -1,5 +1,5 @@
-## -*- coding: utf-8 -*-
-import os
+# -*- coding: utf-8 -*-
+
 from pyramid.response import FileResponse
 from pyramid.request import Request
 from pyramid.path import AssetResolver
@@ -13,6 +13,7 @@ from pyramid.events import ApplicationCreated
 from pyramid.events import subscriber
 
 from ott.utils import file_utils
+from ott.utils import html_utils
 
 import logging
 log = logging.getLogger(__file__)
@@ -21,8 +22,6 @@ log = logging.getLogger(__file__)
 def do_view_config(config):
     """ adds the views (see below) and static directories to pyramid's config
     """
-    # import pdb; pdb.set_trace()
-
     config.add_route('hf_index_desktop',      '/')
     config.add_route('hf_index_html_desktop', '/index.html')
     config.add_route('hf_index_mobile',       '/m')
@@ -73,20 +72,29 @@ def favicon_view(request):
 def sandwich(request):
     from ott.view_header_footer.utils import sandwich
 
+    txt = "You are special, my friend."
+    t = "Really special page"
     h = "This is a special page"
     s = "with extra special formatting"
+    #import pdb; pdb.set_trace()
+    if html_utils.get_lang(request) == "es":
+        t = "Número uno special page"
+        h = "This número uno special page is really buenos días"
+        txt = "Número uno buenos días"
+
+    u = "header.html?title={}&header={}&second_header={}".format(request.host_url, t, h, s)
     if is_mobile(request):
-        head = "{}/m/header.html?header={}&second_header={}".format(request.host_url, h, s)
+        head = "{}/m/{}".format(request.host_url, u)
         foot = "{}/m/footer.html".format(request.host_url)
     else:
-        head = "{}/header.html?header={}&second_header={}".format(request.host_url, h, s)
+        head = "{}/{}".format(request.host_url, u)
         foot = "{}/footer.html".format(request.host_url)
 
     file_path = get_asset_path("templates/shared/app/sandwich_example.html")
     cfg = {'output': file_path,
            'inputs': [
                 {"url": head},
-                {"text": "You are special, my friend."},
+                {"text": txt},
                 {"url": foot}
             ]
     }
