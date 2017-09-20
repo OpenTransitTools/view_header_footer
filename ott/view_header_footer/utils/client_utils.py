@@ -23,7 +23,7 @@ def append_get_param(params, param_name, param_val):
     ret_val = params
 
     if param_name and param_val:
-        ret_val = u"{}&{}={}".format(params, param_name, param_val.decode('utf-8'))
+        ret_val = u"{}&{}={}".format(params, param_name, param_val.replace(" ", "%20").decode('utf-8'))
     return ret_val
 
 
@@ -41,13 +41,15 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
     if is_mobile:
         path = u"m/{}".format(path)
 
-    url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params).replace(" ", "%20")
+    url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
     print u"downloading {0}".format(url)
+    """
     response = urllib2.urlopen(url)
     #response = url_open(url)
     html = response.read()
     if html and len(html) > 0:
         ret_val = html.strip()
+    """
     return ret_val
 
 
@@ -67,7 +69,7 @@ def wget_header(domain="localhost", port="14441", path="header.html", is_mobile=
     if icon_cls: params = append_get_param(params, 'icon_cls', icon_cls)
     if icon_url: params = append_get_param(params, 'icon_url', icon_url)
     if onload: params = append_get_param(params, 'onload', onload)
-    #html = wget_stuff(domain, port, path, is_mobile, params, def_val)
+    html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html
 
 
