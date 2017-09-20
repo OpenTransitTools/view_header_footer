@@ -28,11 +28,21 @@ def append_get_param(params, param_name, param_val):
 
 
 def url_open(url):
+    """ untested / unused downloader """
+    print u"downloading {0}".format(url)
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     opener.addheaders = [('Accept-Charset', 'utf-8')]
     f = opener.open(url)
     return f
+
+
+def url_open(url):
+    """ downloader that opens a URL (or IRL) """
+    print u"downloading {0}".format(url)
+    url = url.encode('utf-8')
+    response = urllib2.urlopen(url)
+    return response
 
 
 def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
@@ -42,14 +52,11 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
         path = u"m/{}".format(path)
 
     url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
-    print u"downloading {0}".format(url)
-    response = urllib2.urlopen(url)
-    """
-    #response = url_open(url)
+    response = url_open(url)
     html = response.read()
     if html and len(html) > 0:
         ret_val = html.strip()
-    """
+
     return ret_val
 
 
