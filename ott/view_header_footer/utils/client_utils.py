@@ -6,6 +6,9 @@
 import sys
 import urllib2
 
+import logging
+log = logging.getLogger(__file__)
+
 
 def clean_str(s):
     ret_val = decode(s)
@@ -43,17 +46,18 @@ def append_get_param(params, param_name, param_val):
 
 def url_open(url):
     """ untested / unused downloader """
-    print u"downloading {0}".format(url)
+    log.info(url)
     opener = urllib2.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     opener.addheaders = [('Accept-Charset', 'utf-8')]
+    url = encode(url)
     f = opener.open(url)
     return f
 
 
 def url_open(url):
     """ downloader that opens a URL (or IRL) """
-    print u"downloading {0}".format(url)
+    log.info(url)
     url = encode(url)
     response = urllib2.urlopen(url)
     return response
