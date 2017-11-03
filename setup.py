@@ -15,6 +15,7 @@ requires = [
     'pyramid < 1.8',
     'pyramid_mako',
     'pyramid_exclog',
+    'repoze.lru',
     'mako',
     'waitress',
     'requests'
