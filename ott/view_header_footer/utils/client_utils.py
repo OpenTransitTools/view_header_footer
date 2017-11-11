@@ -107,7 +107,7 @@ def wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=
     return html
 
 
-@lru_cache(500, timeout=600)
+@lru_cache(10000, timeout=600)
 def cached_wget_header(domain="localhost", port="14441", path="header.html", is_mobile=False,
                 title=None, header=None, sub_header=None, second_header=None,
                 icon_cls=None, icon_url=None,
@@ -117,7 +117,7 @@ def cached_wget_header(domain="localhost", port="14441", path="header.html", is_
     return wget_header(domain, port, path, is_mobile, title, header, sub_header, second_header, icon_cls, icon_url, onload, def_val)
 
 
-@lru_cache(100, timeout=600)
+@lru_cache(10000, timeout=600)
 def cached_wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=False, def_val=""):
     return wget_footer(domain, port, path, is_mobile, def_val)
 
