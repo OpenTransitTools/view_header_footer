@@ -42,6 +42,8 @@ def do_view_config(config):
 
     config.add_route('page_example_desktop', '/example.html')
     config.add_route('page_example_mobile',  '/m/example.html')
+    config.add_route('content_div_desktop',  '/content_div.html')
+    config.add_route('content_div_mobile',   '/m/content_div.html')
 
 
 @view_config(route_name='header_desktop', renderer='desktop/header.html')
@@ -104,7 +106,9 @@ def sandwich(request):
 
 @view_config(route_name='page_example_desktop', renderer='shared/app/page_example.mako')
 @view_config(route_name='page_example_mobile',  renderer='shared/app/page_example.mako')
-def example(request):
+@view_config(route_name='content_div_desktop', renderer='desktop/content_div.mako')
+@view_config(route_name='content_div_mobile',  renderer='mobile/content_div.mako')
+def simp_header_footer(request):
     return {}
 
 
