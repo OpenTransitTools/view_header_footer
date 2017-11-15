@@ -5,6 +5,7 @@
 """
 import sys
 import urllib2
+from repoze.lru import lru_cache
 
 import logging
 log = logging.getLogger(__file__)
@@ -104,6 +105,21 @@ def wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=
     params = ""
     html = wget_stuff(domain, port, path, is_mobile, params, def_val)
     return html
+
+
+@lru_cache(10000, timeout=600)
+def cached_wget_header(domain="localhost", port="14441", path="header.html", is_mobile=False,
+                title=None, header=None, sub_header=None, second_header=None,
+                icon_cls=None, icon_url=None,
+                onload=None,
+                def_val=""):
+    """ http://docs.repoze.org/lru/api.html#repoze.lru.lru_cache """
+    return wget_header(domain, port, path, is_mobile, title, header, sub_header, second_header, icon_cls, icon_url, onload, def_val)
+
+
+@lru_cache(10000, timeout=600)
+def cached_wget_footer(domain="localhost", port="14441", path="footer.html", is_mobile=False, def_val=""):
+    return wget_footer(domain, port, path, is_mobile, def_val)
 
 
 def main():
