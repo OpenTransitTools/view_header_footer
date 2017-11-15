@@ -3,7 +3,6 @@ import setuptools
 from setuptools import setup, find_packages
 setuptools.dist.Distribution(dict(setup_requires='Babel')) # for message_extractors line below (else warnings / errors)
 
-
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.md')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
