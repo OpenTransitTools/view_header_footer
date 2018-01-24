@@ -12,7 +12,7 @@
     port = html_utils.get_svr_port(request)
 
     surl = u"sandwich.html?{}".format(request.query_string).replace("&", "%26")
-    header = client_utils.wget_header(port=port, title=txt, header="Stop [MMM](" + surl + ")", sub_header=txt, icon_cls="fa-ss-outline h1icon", icon_url=surl)
+    header = client_utils.wget_header(port=port, title=txt, header="Stop [MMM](" + surl + ")", sub_header=txt, icon_cls="tmfa-ss-outline h1icon", icon_url=surl)
     footer = client_utils.wget_footer(port=port)
     header = client_utils.clean_str(header)
 %>${header|n}

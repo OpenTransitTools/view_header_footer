@@ -11,6 +11,11 @@
     return ret_val
 %></%def>
 
+
+<%def name="alerts_banner()"><%
+%></%def>
+
+
 <%def name="page_header(def_val=None)"><% return get_first_param_safe_str('header', 200, def_val)%></%def>
 <%def name="page_sub_header(def_val=None)"><% return get_first_param_safe_str('sub_header', 200, def_val)%></%def>
 <%def name="page_second_header(def_val=None)"><% return get_first_param_safe_str('second_header', 200, def_val)%></%def>
