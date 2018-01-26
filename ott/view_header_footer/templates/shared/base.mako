@@ -48,7 +48,7 @@
     %endif
     %if second_header_text:
     <div class="first">
-        <p class="h1sub">${second_header_text|n}</p>
+        <p>${second_header_text|n}</p>
     </div>
     %endif
 </div>
