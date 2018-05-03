@@ -6,7 +6,7 @@
 <%def name="title()">${util.page_title('Transit Information')}</%def>
 
 <%def name="meta_data()">
-    <meta name="robots"      content="all"/>
+    <meta name="robots"      content="noindex"/>
     <meta name="Keywords"    content="Transit, Schedule, Information, Trip Planning"/>
     <meta name="Description" content="Transit Information System"/>
 </%def>
