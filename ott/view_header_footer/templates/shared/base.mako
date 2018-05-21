@@ -27,7 +27,7 @@
 %>
 %if header_text:
 <!-- Header start -->
-<div class="standardheader">
+<div class="standardheader wide">
     %if breadcrumb_text and TODO:
     <p class="breadcrumb"><a href="${util.url_domain()}/index.htm">Home</a> : ${breadcrumb_text}</p>
     %endif
@@ -44,7 +44,9 @@
     <h1>${header_text|n}</h1>
     %endif
     %if sub_header_text:
-    <p class="h1sub">${sub_header_text|n}</p>
+    <div class="first">
+        <p>${sub_header_text|n}</p>
+    </div>
     %endif
     %if second_header_text:
     <div class="first">
