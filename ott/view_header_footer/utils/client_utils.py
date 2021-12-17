@@ -4,7 +4,12 @@
     strings representing the header and footer...
 """
 import sys
-import urllib2
+
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
+
 from repoze.lru import lru_cache
 
 import logging
@@ -127,7 +132,7 @@ def main():
         html = wget_header(header=sys.argv[1])
     else:
         html = wget_header()
-    print html
+    print(html)
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@ def get_url_data(url, def_val=""):
     """
     ret_val = def_val
 
-    print "downloading {0}".format(url)
+    print("downloading {0}".format(url))
     response = urllib2.urlopen(url.replace(" ", "%20"))
     html = response.read()
     if html:
@@ -36,7 +36,7 @@ def get_file_data(file_path, start, end, def_val=""):
         optional start and end points can be defined
     """
     ret_val = def_val
-    print "opening file {0} (start={1}, end={2})".format(file_path, start, end)
+    print("opening file {0} (start={1}, end={2})".format(file_path, start, end))
 
     # step 1: grab file line by line, and bound the output based on optional start or end points in the file
     lines = []
