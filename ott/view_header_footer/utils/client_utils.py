@@ -4,12 +4,7 @@
     strings representing the header and footer...
 """
 import sys
-
-try:
-    import urllib2
-except ImportError:
-    import urllib.request as urllib2
-
+import requests
 from repoze.lru import lru_cache
 
 import logging
@@ -49,26 +44,6 @@ def append_get_param(params, param_name, param_val):
         ret_val = u"{}&{}={}".format(params, param_name, decode(param_val.replace(" ", "%20")))
     return ret_val
 
-
-def url_open(url):
-    """ untested / unused downloader """
-    log.info(url)
-    opener = urllib2.build_opener()
-    opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-    opener.addheaders = [('Accept-Charset', 'utf-8')]
-    url = encode(url)
-    f = opener.open(url)
-    return f
-
-
-def url_open(url):
-    """ downloader that opens a URL (or IRL) """
-    log.info(url)
-    url = encode(url)
-    response = urllib2.urlopen(url)
-    return response
-
-
 def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
     ret_val = def_val
 
@@ -76,8 +51,9 @@ def wget_stuff(domain, port, path, is_mobile, params, def_val=""):
         path = u"m/{}".format(path)
 
     url = u"http://{}:{}/{}?client_utils{}".format(domain, port, path, params)
-    response = url_open(url)
-    html = response.read()
+    log.info(url)
+    response = requests.get(url)
+    html = response.text
     if html and len(html) > 0:
         ret_val = html.strip()
 
